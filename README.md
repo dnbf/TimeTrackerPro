@@ -60,7 +60,7 @@ Contains the core entities and business rules.
 Contains persistence, EF Core configuration, and database access.
 
 ## Roadmap
-[ ] Create solution and project structure
+[ ] Create solution and project structure n/
 [ ] Configure ASP.NET Core Web API
 [ ] Model domain entities
 [ ] Configure EF Core and SQLite
