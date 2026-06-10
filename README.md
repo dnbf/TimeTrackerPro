@@ -99,4 +99,4 @@ This project is currently in the planning / early development phase.
 As I build it, I’ll share updates, architecture decisions, and lessons learned.
 
 ## Contact
-If you want to follow the progress of this project or discuss backend development, feel free to connect with me on LinkedIn.
+If you want to follow the progress of this project or discuss backend development, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/diego-n-b-ferreira).
