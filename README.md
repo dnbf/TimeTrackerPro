@@ -60,16 +60,27 @@ Contains the core entities and business rules.
 Contains persistence, EF Core configuration, and database access.
 
 ## Roadmap
+
 [ ] Create solution and project structure
+
 [ ] Configure ASP.NET Core Web API
+
 [ ] Model domain entities
+
 [ ] Configure EF Core and SQLite
+
 [ ] Implement user registration and login
+
 [ ] Add JWT authentication
+
 [ ] Build activity entry CRUD
+
 [ ] Add filtering and reporting endpoints
+
 [ ] Write tests for core use cases
+
 [ ] Add Docker support
+
 [ ] Deploy to cloud
 
 ## Goals of the Project
