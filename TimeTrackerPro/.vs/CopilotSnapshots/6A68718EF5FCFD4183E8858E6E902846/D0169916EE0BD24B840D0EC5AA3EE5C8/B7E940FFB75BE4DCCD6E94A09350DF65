@@ -1,0 +1,18 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=timetracker.db"
+  },
+  "Jwt": {
+    "SecretKey": "your-super-secret-key-change-this-in-production-minimum-32-characters-long",
+    "Issuer": "TimeTrackerPro",
+    "Audience": "TimeTrackerProUsers",
+    "ExpiryMinutes": 60
+  }
+}

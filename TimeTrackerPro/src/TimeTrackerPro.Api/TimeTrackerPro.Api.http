@@ -1,0 +1,6 @@
+@TimeTrackerPro.Api_HostAddress = http://localhost:5191
+
+GET {{TimeTrackerPro.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,199 @@
+﻿using TimeTrackerPro.Application.DTOs;
+using TimeTrackerPro.Domain.Entities;
+using TimeTrackerPro.Domain.Enums;
+using TimeTrackerPro.Infrastructure.Persistence;
+
+namespace TimeTrackerPro.Application.Services
+{
+    public interface IActivityEntryService
+    {
+        Task<ActivityEntryResponse> CreateAsync(Guid userId, CreateActivityEntryRequest request);
+        Task<ActivityEntryResponse> UpdateAsync(Guid userId, Guid activityId, UpdateActivityEntryRequest request);
+        Task DeleteAsync(Guid userId, Guid activityId);
+        Task<ActivityEntryResponse> GetByIdAsync(Guid userId, Guid activityId);
+        Task<List<ActivityEntryResponse>> GetActivitiesAsync(Guid userId, DateOnly? startDate = null, DateOnly? endDate = null, ActivityCategory? category = null);
+    }
+
+    public class ActivityEntryService : IActivityEntryService
+    {
+        private readonly TimeTrackerDbContext _context;
+        private readonly ILogger<ActivityEntryService> _logger;
+
+        public ActivityEntryService(TimeTrackerDbContext context, ILogger<ActivityEntryService> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+        public async Task<ActivityEntryResponse> CreateAsync(Guid userId, CreateActivityEntryRequest request)
+        {
+            // Validate input
+            ValidateActivityEntry(request);
+
+            // Calculate duration in minutes
+            var duration = (int)(request.EndTime - request.StartTime).TotalMinutes;
+
+            if (duration <= 0)
+                throw new ArgumentException("StartTime must be before EndTime");
+
+            // Create new activity entry
+            var activity = new ActivityEntry
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId,
+                Date = request.Date,
+                StartTime = request.StartTime,
+                EndTime = request.EndTime,
+                DurationMinutes = duration,
+                Category = request.Category,
+                Description = request.Description,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.ActivityEntries.Add(activity);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Activity entry created: {activity.Id} for user {userId}");
+
+            return MapToResponse(activity);
+        }
+
+        public async Task<ActivityEntryResponse> UpdateAsync(Guid userId, Guid activityId, UpdateActivityEntryRequest request)
+        {
+            // Validate input
+            ValidateActivityEntry(request);
+
+            // Find activity entry
+            var activity = _context.ActivityEntries.FirstOrDefault(a => a.Id == activityId && a.UserId == userId);
+            if (activity == null)
+                throw new InvalidOperationException("Activity not found");
+
+            // Calculate new duration
+            var duration = (int)(request.EndTime - request.StartTime).TotalMinutes;
+
+            if (duration <= 0)
+                throw new ArgumentException("StartTime must be before EndTime");
+
+            // Update activity
+            activity.Date = request.Date;
+            activity.StartTime = request.StartTime;
+            activity.EndTime = request.EndTime;
+            activity.DurationMinutes = duration;
+            activity.Category = request.Category;
+            activity.Description = request.Description;
+
+            _context.ActivityEntries.Update(activity);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Activity entry updated: {activityId} for user {userId}");
+
+            return MapToResponse(activity);
+        }
+
+        public async Task DeleteAsync(Guid userId, Guid activityId)
+        {
+            // Find activity entry
+            var activity = _context.ActivityEntries.FirstOrDefault(a => a.Id == activityId && a.UserId == userId);
+            if (activity == null)
+                throw new InvalidOperationException("Activity not found");
+
+            _context.ActivityEntries.Remove(activity);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation($"Activity entry deleted: {activityId} for user {userId}");
+        }
+
+        public async Task<ActivityEntryResponse> GetByIdAsync(Guid userId, Guid activityId)
+        {
+            var activity = await Task.Run(() =>
+                _context.ActivityEntries.FirstOrDefault(a => a.Id == activityId && a.UserId == userId)
+            );
+
+            if (activity == null)
+                throw new InvalidOperationException("Activity not found");
+
+            return MapToResponse(activity);
+        }
+
+        public async Task<List<ActivityEntryResponse>> GetActivitiesAsync(
+            Guid userId,
+            DateOnly? startDate = null,
+            DateOnly? endDate = null,
+            ActivityCategory? category = null)
+        {
+            var query = _context.ActivityEntries
+                .Where(a => a.UserId == userId);
+
+            // Apply date filter
+            if (startDate.HasValue)
+                query = query.Where(a => a.Date >= startDate.Value);
+
+            if (endDate.HasValue)
+                query = query.Where(a => a.Date <= endDate.Value);
+
+            // Apply category filter
+            if (category.HasValue)
+                query = query.Where(a => a.Category == category.Value);
+
+            var activities = await Task.Run(() =>
+                query.OrderByDescending(a => a.Date)
+                     .ThenByDescending(a => a.StartTime)
+                     .ToList()
+            );
+
+            return activities.Select(MapToResponse).ToList();
+        }
+
+        private static void ValidateActivityEntry(CreateActivityEntryRequest request)
+        {
+            if (request.Date == default)
+                throw new ArgumentException("Date is required");
+
+            if (request.StartTime == default)
+                throw new ArgumentException("StartTime is required");
+
+            if (request.EndTime == default)
+                throw new ArgumentException("EndTime is required");
+
+            if (!Enum.IsDefined(typeof(ActivityCategory), request.Category))
+                throw new ArgumentException("Invalid category");
+
+            if (request.Description.Length > 500)
+                throw new ArgumentException("Description cannot exceed 500 characters");
+        }
+
+        private static void ValidateActivityEntry(UpdateActivityEntryRequest request)
+        {
+            if (request.Date == default)
+                throw new ArgumentException("Date is required");
+
+            if (request.StartTime == default)
+                throw new ArgumentException("StartTime is required");
+
+            if (request.EndTime == default)
+                throw new ArgumentException("EndTime is required");
+
+            if (!Enum.IsDefined(typeof(ActivityCategory), request.Category))
+                throw new ArgumentException("Invalid category");
+
+            if (request.Description.Length > 500)
+                throw new ArgumentException("Description cannot exceed 500 characters");
+        }
+
+        private static ActivityEntryResponse MapToResponse(ActivityEntry activity)
+        {
+            return new ActivityEntryResponse
+            {
+                Id = activity.Id,
+                UserId = activity.UserId,
+                Date = activity.Date,
+                StartTime = activity.StartTime,
+                EndTime = activity.EndTime,
+                DurationMinutes = activity.DurationMinutes,
+                Category = activity.Category,
+                Description = activity.Description,
+                CreatedAt = activity.CreatedAt
+            };
+        }
+    }
+}

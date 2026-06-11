@@ -1,0 +1,352 @@
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using TimeTrackerPro.Application.Services;
+using TimeTrackerPro.Domain.Entities;
+using TimeTrackerPro.Domain.Enums;
+using TimeTrackerPro.Infrastructure.Persistence;
+
+namespace TimeTrackerPro.Tests.Services
+{
+    public class ReportServiceTests
+    {
+        private readonly Mock<TimeTrackerDbContext> _mockDbContext;
+        private readonly Mock<ILogger<ReportService>> _mockLogger;
+        private readonly ReportService _reportService;
+
+        public ReportServiceTests()
+        {
+            _mockDbContext = new Mock<TimeTrackerDbContext>();
+            _mockLogger = new Mock<ILogger<ReportService>>();
+            _reportService = new ReportService(_mockDbContext.Object, _mockLogger.Object);
+        }
+
+        [Fact]
+        public async Task GetTimeByCategoryReportAsync_WithValidDateRange_ReturnsGroupedReport()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+            var endDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var activities = new List<ActivityEntry>
+            {
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = startDate,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(11, 0, 0),
+                    DurationMinutes = 120,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = startDate.AddDays(1),
+                    StartTime = new TimeSpan(14, 0, 0),
+                    EndTime = new TimeSpan(15, 30, 0),
+                    DurationMinutes = 90,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work 2"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = startDate.AddDays(1),
+                    StartTime = new TimeSpan(16, 0, 0),
+                    EndTime = new TimeSpan(17, 0, 0),
+                    DurationMinutes = 60,
+                    Category = ActivityCategory.Meeting,
+                    Description = "Team meeting"
+                }
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return activities.Where(compiled).AsQueryable();
+                });
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetTimeByCategoryReportAsync(userId, startDate, endDate);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+
+            var devReport = result.FirstOrDefault(r => r.Category == "Development");
+            Assert.NotNull(devReport);
+            Assert.Equal(210, devReport.TotalMinutes);
+            Assert.Equal(3.5, devReport.TotalHours);
+            Assert.Equal(2, devReport.ActivityCount);
+
+            var meetingReport = result.FirstOrDefault(r => r.Category == "Meeting");
+            Assert.NotNull(meetingReport);
+            Assert.Equal(60, meetingReport.TotalMinutes);
+            Assert.Equal(1.0, meetingReport.TotalHours);
+            Assert.Equal(1, meetingReport.ActivityCount);
+        }
+
+        [Fact]
+        public async Task GetTimeByCategoryReportAsync_WithInvalidDateRange_ThrowsArgumentException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now);
+            var endDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => 
+                _reportService.GetTimeByCategoryReportAsync(userId, startDate, endDate));
+        }
+
+        [Fact]
+        public async Task GetTimeByCategoryReportAsync_WithCategoryFilter_ReturnsOnlyFilteredCategory()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+            var endDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var activities = new List<ActivityEntry>
+            {
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = startDate,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(11, 0, 0),
+                    DurationMinutes = 120,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = startDate.AddDays(1),
+                    StartTime = new TimeSpan(16, 0, 0),
+                    EndTime = new TimeSpan(17, 0, 0),
+                    DurationMinutes = 60,
+                    Category = ActivityCategory.Meeting,
+                    Description = "Team meeting"
+                }
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return activities.Where(compiled).AsQueryable();
+                });
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetTimeByCategoryReportAsync(
+                userId, startDate, endDate, ActivityCategory.Development);
+
+            // Assert
+            Assert.Single(result);
+            Assert.Equal("Development", result[0].Category);
+            Assert.Equal(120, result[0].TotalMinutes);
+        }
+
+        [Fact]
+        public async Task GetTimeByCategoryReportAsync_WithNoActivities_ReturnsEmptyList()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+            var endDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns(Enumerable.Empty<ActivityEntry>().AsQueryable());
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetTimeByCategoryReportAsync(userId, startDate, endDate);
+
+            // Assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public async Task GetDailySummaryReportAsync_WithValidDateRange_ReturnsGroupedReport()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var date1 = DateOnly.FromDateTime(DateTime.Now.AddDays(-2));
+            var date2 = DateOnly.FromDateTime(DateTime.Now.AddDays(-1));
+
+            var activities = new List<ActivityEntry>
+            {
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = date1,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(11, 0, 0),
+                    DurationMinutes = 120,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = date1,
+                    StartTime = new TimeSpan(14, 0, 0),
+                    EndTime = new TimeSpan(15, 0, 0),
+                    DurationMinutes = 60,
+                    Category = ActivityCategory.Meeting,
+                    Description = "Team meeting"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = date2,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(12, 30, 0),
+                    DurationMinutes = 210,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work 2"
+                }
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return activities.Where(compiled).AsQueryable();
+                });
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetDailySummaryReportAsync(userId, date1, date2);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+
+            var day1Report = result.FirstOrDefault(r => r.Date == date1);
+            Assert.NotNull(day1Report);
+            Assert.Equal(180, day1Report.TotalMinutes);
+            Assert.Equal(3.0, day1Report.TotalHours);
+            Assert.Equal(2, day1Report.ActivityCount);
+
+            var day2Report = result.FirstOrDefault(r => r.Date == date2);
+            Assert.NotNull(day2Report);
+            Assert.Equal(210, day2Report.TotalMinutes);
+            Assert.Equal(3.5, day2Report.TotalHours);
+            Assert.Equal(1, day2Report.ActivityCount);
+
+            // Verify order (ascending by date)
+            Assert.True(result[0].Date < result[1].Date);
+        }
+
+        [Fact]
+        public async Task GetDailySummaryReportAsync_WithInvalidDateRange_ThrowsArgumentException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now);
+            var endDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => 
+                _reportService.GetDailySummaryReportAsync(userId, startDate, endDate));
+        }
+
+        [Fact]
+        public async Task GetDailySummaryReportAsync_WithSingleDay_ReturnsOneDayReport()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var date = DateOnly.FromDateTime(DateTime.Now);
+
+            var activities = new List<ActivityEntry>
+            {
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = date,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(12, 0, 0),
+                    DurationMinutes = 180,
+                    Category = ActivityCategory.Development,
+                    Description = "Dev work"
+                },
+                new ActivityEntry
+                {
+                    Id = Guid.NewGuid(),
+                    UserId = userId,
+                    Date = date,
+                    StartTime = new TimeSpan(14, 0, 0),
+                    EndTime = new TimeSpan(15, 0, 0),
+                    DurationMinutes = 60,
+                    Category = ActivityCategory.Break,
+                    Description = "Break"
+                }
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return activities.Where(compiled).AsQueryable();
+                });
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetDailySummaryReportAsync(userId, date, date);
+
+            // Assert
+            Assert.Single(result);
+            Assert.Equal(date, result[0].Date);
+            Assert.Equal(240, result[0].TotalMinutes);
+            Assert.Equal(4.0, result[0].TotalHours);
+            Assert.Equal(2, result[0].ActivityCount);
+        }
+
+        [Fact]
+        public async Task GetDailySummaryReportAsync_WithNoActivities_ReturnsEmptyList()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var startDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-5));
+            var endDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Where(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns(Enumerable.Empty<ActivityEntry>().AsQueryable());
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _reportService.GetDailySummaryReportAsync(userId, startDate, endDate);
+
+            // Assert
+            Assert.Empty(result);
+        }
+    }
+}

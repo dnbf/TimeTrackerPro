@@ -1,0 +1,301 @@
+﻿using Moq;
+using TimeTrackerPro.Application.DTOs;
+using TimeTrackerPro.Application.Services;
+using TimeTrackerPro.Domain.Entities;
+using TimeTrackerPro.Infrastructure.Persistence;
+using TimeTrackerPro.Infrastructure.Services;
+
+namespace TimeTrackerPro.Tests.Services
+{
+    public class AuthServiceTests
+    {
+        private readonly Mock<TimeTrackerDbContext> _mockDbContext;
+        private readonly Mock<IPasswordHasherService> _mockPasswordHasher;
+        private readonly Mock<IJwtTokenService> _mockTokenService;
+        private readonly AuthService _authService;
+
+        public AuthServiceTests()
+        {
+            _mockDbContext = new Mock<TimeTrackerDbContext>();
+            _mockPasswordHasher = new Mock<IPasswordHasherService>();
+            _mockTokenService = new Mock<IJwtTokenService>();
+
+            _authService = new AuthService(_mockDbContext.Object, _mockPasswordHasher.Object, _mockTokenService.Object);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_WithValidData_ReturnsUserResponse()
+        {
+            // Arrange
+            var request = new RegisterUserRequest
+            {
+                Name = "João Silva",
+                Email = "joao@example.com",
+                Password = "Password123"
+            };
+
+            _mockPasswordHasher.Setup(x => x.HashPassword(It.IsAny<string>()))
+                .Returns("hashed_password");
+
+            _mockTokenService.Setup(x => x.GenerateToken(It.IsAny<User>()))
+                .Returns("jwt_token");
+
+            var mockUsers = new List<User>();
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockUsers.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+            _mockDbContext.Setup(x => x.Users.Add(It.IsAny<User>()))
+                .Callback<User>(u => mockUsers.Add(u));
+            _mockDbContext.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(1);
+
+            // Act
+            var result = await _authService.RegisterAsync(request);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(request.Name, result.Name);
+            Assert.Equal(request.Email, result.Email);
+            Assert.Equal("jwt_token", result.Token);
+            _mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task RegisterAsync_WithDuplicateEmail_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var request = new RegisterUserRequest
+            {
+                Name = "João Silva",
+                Email = "joao@example.com",
+                Password = "Password123"
+            };
+
+            var existingUser = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "Existing User",
+                Email = "joao@example.com",
+                PasswordHash = "hash"
+            };
+
+            var mockUsers = new List<User> { existingUser };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockUsers.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _authService.RegisterAsync(request));
+        }
+
+        [Fact]
+        public async Task RegisterAsync_WithWeakPassword_ThrowsArgumentException()
+        {
+            // Arrange
+            var request = new RegisterUserRequest
+            {
+                Name = "João Silva",
+                Email = "joao@example.com",
+                Password = "weak"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _authService.RegisterAsync(request));
+        }
+
+        [Fact]
+        public async Task RegisterAsync_WithoutUppercase_ThrowsArgumentException()
+        {
+            // Arrange
+            var request = new RegisterUserRequest
+            {
+                Name = "João Silva",
+                Email = "joao@example.com",
+                Password = "password123"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _authService.RegisterAsync(request));
+        }
+
+        [Fact]
+        public async Task RegisterAsync_WithoutNumber_ThrowsArgumentException()
+        {
+            // Arrange
+            var request = new RegisterUserRequest
+            {
+                Name = "João Silva",
+                Email = "joao@example.com",
+                Password = "PasswordABC"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _authService.RegisterAsync(request));
+        }
+
+        [Fact]
+        public async Task LoginAsync_WithValidCredentials_ReturnsUserResponse()
+        {
+            // Arrange
+            var request = new LoginRequest
+            {
+                Email = "joao@example.com",
+                Password = "Password123"
+            };
+
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "João Silva",
+                Email = "joao@example.com",
+                PasswordHash = "hashed_password"
+            };
+
+            var mockUsers = new List<User> { user };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockUsers.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            _mockPasswordHasher.Setup(x => x.VerifyPassword(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(true);
+
+            _mockTokenService.Setup(x => x.GenerateToken(It.IsAny<User>()))
+                .Returns("jwt_token");
+
+            // Act
+            var result = await _authService.LoginAsync(request);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(user.Id, result.Id);
+            Assert.Equal(user.Name, result.Name);
+            Assert.Equal(user.Email, result.Email);
+            Assert.Equal("jwt_token", result.Token);
+        }
+
+        [Fact]
+        public async Task LoginAsync_WithInvalidEmail_ThrowsUnauthorizedAccessException()
+        {
+            // Arrange
+            var request = new LoginRequest
+            {
+                Email = "nonexistent@example.com",
+                Password = "Password123"
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) => null);
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<UnauthorizedAccessException>(() => _authService.LoginAsync(request));
+        }
+
+        [Fact]
+        public async Task LoginAsync_WithInvalidPassword_ThrowsUnauthorizedAccessException()
+        {
+            // Arrange
+            var request = new LoginRequest
+            {
+                Email = "joao@example.com",
+                Password = "WrongPassword123"
+            };
+
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = "João Silva",
+                Email = "joao@example.com",
+                PasswordHash = "hashed_password"
+            };
+
+            var mockUsers = new List<User> { user };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockUsers.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            _mockPasswordHasher.Setup(x => x.VerifyPassword(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(false);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<UnauthorizedAccessException>(() => _authService.LoginAsync(request));
+        }
+
+        [Fact]
+        public async Task GetCurrentUserAsync_WithValidUserId_ReturnsUserResponse()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var user = new User
+            {
+                Id = userId,
+                Name = "João Silva",
+                Email = "joao@example.com",
+                PasswordHash = "hashed_password"
+            };
+
+            var mockUsers = new List<User> { user };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockUsers.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _authService.GetCurrentUserAsync(userId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.Id);
+            Assert.Equal(user.Name, result.Name);
+            Assert.Equal(user.Email, result.Email);
+            Assert.Empty(result.Token);
+        }
+
+        [Fact]
+        public async Task GetCurrentUserAsync_WithInvalidUserId_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<User>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<User, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<User, bool>> predicate) => null);
+
+            _mockDbContext.Setup(x => x.Users).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _authService.GetCurrentUserAsync(userId));
+        }
+    }
+}

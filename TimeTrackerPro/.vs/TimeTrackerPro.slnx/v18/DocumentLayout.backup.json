@@ -1,0 +1,575 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C775CB1B-F2C0-A1E9-D993-34E0CCCECD69}|src\\TimeTrackerPro.Domain\\TimeTrackerPro.Domain.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.domain\\entities\\activityentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C775CB1B-F2C0-A1E9-D993-34E0CCCECD69}|src\\TimeTrackerPro.Domain\\TimeTrackerPro.Domain.csproj|solutionrelative:src\\timetrackerpro.domain\\entities\\activityentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\userresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\registeruserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\registeruserrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767C2CFA-E989-413E-4CFB-486AA8EFBCBD}|src\\TimeTrackerPro.Infrastructure\\TimeTrackerPro.Infrastructure.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.infrastructure\\services\\passwordhasherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767C2CFA-E989-413E-4CFB-486AA8EFBCBD}|src\\TimeTrackerPro.Infrastructure\\TimeTrackerPro.Infrastructure.csproj|solutionrelative:src\\timetrackerpro.infrastructure\\services\\passwordhasherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{767C2CFA-E989-413E-4CFB-486AA8EFBCBD}|src\\TimeTrackerPro.Infrastructure\\TimeTrackerPro.Infrastructure.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.infrastructure\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{767C2CFA-E989-413E-4CFB-486AA8EFBCBD}|src\\TimeTrackerPro.Infrastructure\\TimeTrackerPro.Infrastructure.csproj|solutionrelative:src\\timetrackerpro.infrastructure\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|solutionrelative:src\\timetrackerpro.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|solutionrelative:src\\timetrackerpro.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\timetrackerpro.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\timetrackerpro.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE3_AUTH.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TESTING_PHASE3_AUTH.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\createactivityentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\createactivityentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\activityentryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\activityentryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\updateactivityentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\updateactivityentryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\services\\activityentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\services\\activityentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.api\\controllers\\activitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|solutionrelative:src\\timetrackerpro.api\\controllers\\activitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|solutionrelative:src\\timetrackerpro.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE4_ACTIVITIES.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TESTING_PHASE4_ACTIVITIES.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\dailysummaryreportresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\dailysummaryreportresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\dtos\\timebycategoryreportresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\dtos\\timebycategoryreportresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFA8F58E-8B95-2968-96D7-EFAF918FEE51}|src\\TimeTrackerPro.Api\\TimeTrackerPro.Api.csproj|solutionrelative:src\\timetrackerpro.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE5_REPORTS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TESTING_PHASE5_REPORTS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\COMPLETE_TESTING_GUIDE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:COMPLETE_TESTING_GUIDE.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\tests\\timetrackerpro.tests\\timetrackerpro.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|solutionrelative:tests\\timetrackerpro.tests\\timetrackerpro.tests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\tests\\timetrackerpro.tests\\services\\passwordhasherservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|solutionrelative:tests\\timetrackerpro.tests\\services\\passwordhasherservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\tests\\timetrackerpro.tests\\dtos\\dtotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{72D0F24C-C43C-E080-D14B-9464E756F7E1}|tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj|solutionrelative:tests\\timetrackerpro.tests\\dtos\\dtotests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE6_UNIT_TESTS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TESTING_PHASE6_UNIT_TESTS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\PROJECT_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PROJECT_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\FINAL_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FINAL_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\CELEBRATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CELEBRATION.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 24,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ActivityEntry.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T01:58:07.347Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CELEBRATION.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\CELEBRATION.md",
+              "RelativeDocumentMoniker": "CELEBRATION.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\CELEBRATION.md",
+              "RelativeToolTip": "CELEBRATION.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:34:23.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "FINAL_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\FINAL_SUMMARY.md",
+              "RelativeDocumentMoniker": "FINAL_SUMMARY.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\FINAL_SUMMARY.md",
+              "RelativeToolTip": "FINAL_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:33:00.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:32:31.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "GETTING_STARTED_NEXT_STEPS.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md",
+              "RelativeDocumentMoniker": "GETTING_STARTED_NEXT_STEPS.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md",
+              "RelativeToolTip": "GETTING_STARTED_NEXT_STEPS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:31:40.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PROJECT_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\PROJECT_SUMMARY.md",
+              "RelativeDocumentMoniker": "PROJECT_SUMMARY.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\PROJECT_SUMMARY.md",
+              "RelativeToolTip": "PROJECT_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:31:13.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "TESTING_PHASE6_UNIT_TESTS.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE6_UNIT_TESTS.md",
+              "RelativeDocumentMoniker": "TESTING_PHASE6_UNIT_TESTS.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE6_UNIT_TESTS.md",
+              "RelativeToolTip": "TESTING_PHASE6_UNIT_TESTS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:30:37.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DTOTests.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
+              "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
+              "RelativeToolTip": "tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:29:47.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PasswordHasherServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
+              "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
+              "RelativeToolTip": "tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:27:37.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "TimeTrackerPro.Tests",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
+              "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
+              "RelativeToolTip": "tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
+              "ViewState": "AgIAAA4AAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-11T19:27:20.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "COMPLETE_TESTING_GUIDE.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\COMPLETE_TESTING_GUIDE.md",
+              "RelativeDocumentMoniker": "COMPLETE_TESTING_GUIDE.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\COMPLETE_TESTING_GUIDE.md",
+              "RelativeToolTip": "COMPLETE_TESTING_GUIDE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJ4DAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:22:21.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TESTING_PHASE5_REPORTS.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE5_REPORTS.md",
+              "RelativeDocumentMoniker": "TESTING_PHASE5_REPORTS.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE5_REPORTS.md",
+              "RelativeToolTip": "TESTING_PHASE5_REPORTS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:19:38.536Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:18:58.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:18:50.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TimeByCategoryReportResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:18:42.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DailySummaryReportResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:18:42.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TESTING_PHASE4_ACTIVITIES.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE4_ACTIVITIES.md",
+              "RelativeDocumentMoniker": "TESTING_PHASE4_ACTIVITIES.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE4_ACTIVITIES.md",
+              "RelativeToolTip": "TESTING_PHASE4_ACTIVITIES.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:18:10.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Program.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Api\\Program.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:16:17.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ActivitiesController.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:16:06.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ActivityEntryService.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAABBwMgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:15:56.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UpdateActivityEntryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:15:44.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ActivityEntryResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:15:44.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CreateActivityEntryRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T19:15:44.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TESTING_PHASE3_AUTH.md",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE3_AUTH.md",
+              "RelativeDocumentMoniker": "TESTING_PHASE3_AUTH.md",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE3_AUTH.md",
+              "RelativeToolTip": "TESTING_PHASE3_AUTH.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-11T19:14:36.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAEwJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:47:48.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TimeTrackerPro.Application.csproj",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-11T03:47:39.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\appsettings.json",
+              "RelativeToolTip": "src\\TimeTrackerPro.Api\\appsettings.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-11T03:47:10.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAIBJwGQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:49.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "JwtTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:36.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PasswordHasherService.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:32.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:26.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterUserRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:26.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",
+              "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",
+              "ToolTip": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",
+              "RelativeToolTip": "src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-11T03:46:26.364Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

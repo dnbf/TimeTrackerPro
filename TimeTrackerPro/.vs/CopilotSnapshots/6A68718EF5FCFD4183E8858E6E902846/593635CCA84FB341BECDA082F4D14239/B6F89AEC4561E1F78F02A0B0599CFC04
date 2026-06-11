@@ -1,0 +1,317 @@
+﻿using Microsoft.Extensions.Logging;
+using Moq;
+using TimeTrackerPro.Application.DTOs;
+using TimeTrackerPro.Application.Services;
+using TimeTrackerPro.Domain.Entities;
+using TimeTrackerPro.Domain.Enums;
+using TimeTrackerPro.Infrastructure.Persistence;
+
+namespace TimeTrackerPro.Tests.Services
+{
+    public class ActivityEntryServiceTests
+    {
+        private readonly Mock<TimeTrackerDbContext> _mockDbContext;
+        private readonly Mock<ILogger<ActivityEntryService>> _mockLogger;
+        private readonly ActivityEntryService _activityService;
+
+        public ActivityEntryServiceTests()
+        {
+            _mockDbContext = new Mock<TimeTrackerDbContext>();
+            _mockLogger = new Mock<ILogger<ActivityEntryService>>();
+            _activityService = new ActivityEntryService(_mockDbContext.Object, _mockLogger.Object);
+        }
+
+        [Fact]
+        public async Task CreateAsync_WithValidData_ReturnsActivityResponse()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var request = new CreateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(11, 0, 0),
+                Category = ActivityCategory.Development,
+                Description = "Test activity"
+            };
+
+            var mockActivities = new List<ActivityEntry>();
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Add(It.IsAny<ActivityEntry>()))
+                .Callback<ActivityEntry>(a => mockActivities.Add(a));
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+            _mockDbContext.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(1);
+
+            // Act
+            var result = await _activityService.CreateAsync(userId, request);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.UserId);
+            Assert.Equal(request.Date, result.Date);
+            Assert.Equal(120, result.DurationMinutes);
+            Assert.Equal(request.Category, result.Category);
+            Assert.Equal(request.Description, result.Description);
+            _mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task CreateAsync_WithInvalidTimeRange_ThrowsArgumentException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var request = new CreateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(11, 0, 0),
+                EndTime = new TimeSpan(9, 0, 0),
+                Category = ActivityCategory.Development,
+                Description = "Test activity"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _activityService.CreateAsync(userId, request));
+        }
+
+        [Fact]
+        public async Task CreateAsync_WithEqualStartAndEndTime_ThrowsArgumentException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var request = new CreateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(9, 0, 0),
+                Category = ActivityCategory.Development,
+                Description = "Test activity"
+            };
+
+            // Act & Assert
+            await Assert.ThrowsAsync<ArgumentException>(() => _activityService.CreateAsync(userId, request));
+        }
+
+        [Fact]
+        public async Task CreateAsync_CalculatesDurationCorrectly()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var request = new CreateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 30, 0),
+                EndTime = new TimeSpan(12, 45, 0),
+                Category = ActivityCategory.Development,
+                Description = "Test activity"
+            };
+
+            var mockActivities = new List<ActivityEntry>();
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.Add(It.IsAny<ActivityEntry>()))
+                .Callback<ActivityEntry>(a => mockActivities.Add(a));
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+            _mockDbContext.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(1);
+
+            // Act
+            var result = await _activityService.CreateAsync(userId, request);
+
+            // Assert
+            Assert.Equal(195, result.DurationMinutes); // 3 hours 15 minutes = 195 minutes
+        }
+
+        [Fact]
+        public async Task UpdateAsync_WithValidData_ReturnsUpdatedActivityResponse()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+            var existingActivity = new ActivityEntry
+            {
+                Id = activityId,
+                UserId = userId,
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(11, 0, 0),
+                DurationMinutes = 120,
+                Category = ActivityCategory.Development,
+                Description = "Old description"
+            };
+
+            var updateRequest = new UpdateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(10, 0, 0),
+                EndTime = new TimeSpan(12, 30, 0),
+                Category = ActivityCategory.Meeting,
+                Description = "Updated description"
+            };
+
+            var mockActivities = new List<ActivityEntry> { existingActivity };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockActivities.FirstOrDefault(compiled);
+                });
+            mockDbSet.Setup(m => m.Update(It.IsAny<ActivityEntry>()));
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+            _mockDbContext.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(1);
+
+            // Act
+            var result = await _activityService.UpdateAsync(userId, activityId, updateRequest);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(activityId, result.Id);
+            Assert.Equal(150, result.DurationMinutes); // 2.5 hours = 150 minutes
+            Assert.Equal("Updated description", result.Description);
+            Assert.Equal(ActivityCategory.Meeting, result.Category);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_WithNonexistentActivity_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+            var updateRequest = new UpdateActivityEntryRequest
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(10, 0, 0),
+                Category = ActivityCategory.Development,
+                Description = "Test"
+            };
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) => null);
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _activityService.UpdateAsync(userId, activityId, updateRequest));
+        }
+
+        [Fact]
+        public async Task DeleteAsync_WithValidId_RemovesActivity()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+            var activity = new ActivityEntry
+            {
+                Id = activityId,
+                UserId = userId,
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(11, 0, 0),
+                DurationMinutes = 120,
+                Category = ActivityCategory.Development,
+                Description = "Test"
+            };
+
+            var mockActivities = new List<ActivityEntry> { activity };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockActivities.FirstOrDefault(compiled);
+                });
+            mockDbSet.Setup(m => m.Remove(It.IsAny<ActivityEntry>()))
+                .Callback<ActivityEntry>(a => mockActivities.Remove(a));
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+            _mockDbContext.Setup(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()))
+                .ReturnsAsync(1);
+
+            // Act
+            await _activityService.DeleteAsync(userId, activityId);
+
+            // Assert
+            Assert.Empty(mockActivities);
+            _mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteAsync_WithNonexistentActivity_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) => null);
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _activityService.DeleteAsync(userId, activityId));
+        }
+
+        [Fact]
+        public async Task GetByIdAsync_WithValidId_ReturnsActivityResponse()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+            var activity = new ActivityEntry
+            {
+                Id = activityId,
+                UserId = userId,
+                Date = DateOnly.FromDateTime(DateTime.Now),
+                StartTime = new TimeSpan(9, 0, 0),
+                EndTime = new TimeSpan(11, 0, 0),
+                DurationMinutes = 120,
+                Category = ActivityCategory.Development,
+                Description = "Test activity"
+            };
+
+            var mockActivities = new List<ActivityEntry> { activity };
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) =>
+                {
+                    var compiled = predicate.Compile();
+                    return mockActivities.FirstOrDefault(compiled);
+                });
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act
+            var result = await _activityService.GetByIdAsync(userId, activityId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(activityId, result.Id);
+            Assert.Equal(userId, result.UserId);
+            Assert.Equal("Test activity", result.Description);
+        }
+
+        [Fact]
+        public async Task GetByIdAsync_WithNonexistentId_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var userId = Guid.NewGuid();
+            var activityId = Guid.NewGuid();
+
+            var mockDbSet = new Mock<Microsoft.EntityFrameworkCore.DbSet<ActivityEntry>>();
+            mockDbSet.Setup(m => m.FirstOrDefault(It.IsAny<System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>>>()))
+                .Returns((System.Linq.Expressions.Expression<System.Func<ActivityEntry, bool>> predicate) => null);
+
+            _mockDbContext.Setup(x => x.ActivityEntries).Returns(mockDbSet.Object);
+
+            // Act & Assert
+            await Assert.ThrowsAsync<InvalidOperationException>(() => _activityService.GetByIdAsync(userId, activityId));
+        }
+    }
+}

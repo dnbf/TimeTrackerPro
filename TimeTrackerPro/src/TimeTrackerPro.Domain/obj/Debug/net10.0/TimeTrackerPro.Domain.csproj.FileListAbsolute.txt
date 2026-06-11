@@ -1,0 +1,12 @@
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\bin\Debug\net10.0\TimeTrackerPro.Domain.deps.json
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\bin\Debug\net10.0\TimeTrackerPro.Domain.dll
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\bin\Debug\net10.0\TimeTrackerPro.Domain.pdb
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.AssemblyInfoInputs.cache
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.AssemblyInfo.cs
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.sourcelink.json
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.dll
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\refint\TimeTrackerPro.Domain.dll
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\TimeTrackerPro.Domain.pdb
+C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\src\TimeTrackerPro.Domain\obj\Debug\net10.0\ref\TimeTrackerPro.Domain.dll
