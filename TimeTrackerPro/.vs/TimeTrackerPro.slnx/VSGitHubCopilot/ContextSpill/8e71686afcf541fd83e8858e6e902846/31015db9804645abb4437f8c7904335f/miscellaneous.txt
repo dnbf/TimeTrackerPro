@@ -1,0 +1,243 @@
+﻿Execução de teste concluída. 10 teste(s) executado(s). 0 Aprovado, 10 Com Falha 
+TimeTrackerPro.Tests.Services.AuthServiceTests.LoginAsync_WithInvalidPassword_ThrowsUnauthorizedAccessException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithWeakPassword_ThrowsArgumentException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithDuplicateEmail_ThrowsInvalidOperationException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithoutUppercase_ThrowsArgumentException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithValidData_ReturnsUserResponse Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.LoginAsync_WithValidCredentials_ReturnsUserResponse Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.GetCurrentUserAsync_WithInvalidUserId_ThrowsInvalidOperationException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.GetCurrentUserAsync_WithValidUserId_ReturnsUserResponse Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.LoginAsync_WithInvalidEmail_ThrowsUnauthorizedAccessException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithoutNumber_ThrowsArgumentException Failed | Error: System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+Could not find a parameterless constructor. (Parameter 'constructorArguments')
+---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found. | StackTrace:    at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+   at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments) in /_/src/Moq/Interception/CastleProxyFactory.cs:line 110
+   at Moq.Mock`1.InitializeInstance() in /_/src/Moq/Mock`1.cs:line 502
+   at Moq.Mock`1.OnGetObject() in /_/src/Moq/Mock`1.cs:line 516
+   at Moq.Mock.get_Object() in /_/src/Moq/Mock.cs:line 180
+   at Moq.Mock`1.get_Object() in /_/src/Moq/Mock`1.cs:line 453
+   at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor() in C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs:line 23
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+----- Inner Stack Trace -----
+   at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+   at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+
+Test Output:
+[Informational] [xUnit.net 00:00:00.10]   Starting:    TimeTrackerPro.Tests
+[Error] [xUnit.net 00:00:01.31]     TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithoutNumber_ThrowsArgumentException [FAIL]
+[Informational] [xUnit.net 00:00:01.32]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.32]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.32]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.32]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.32]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.32]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.32]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.32]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.32]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.32]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.32]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.32]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.32]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+[Informational] [xUnit.net 00:00:01.32]         ----- Inner Stack Trace -----
+[Informational] [xUnit.net 00:00:01.32]            at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+[Informational] [xUnit.net 00:00:01.32]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Error] [xUnit.net 00:00:01.34]     TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithWeakPassword_ThrowsArgumentException [FAIL]
+[Informational] [xUnit.net 00:00:01.34]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.34]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.34]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.34]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.34]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.34]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.34]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.34]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+[Informational] [xUnit.net 00:00:01.34]         ----- Inner Stack Trace -----
+[Informational] [xUnit.net 00:00:01.34]            at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+[Informational] [xUnit.net 00:00:01.34]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Error] [xUnit.net 00:00:01.34]     TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithValidData_ReturnsUserResponse [FAIL]
+[Informational] [xUnit.net 00:00:01.34]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.34]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.34]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.34]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.34]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.34]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.34]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.34]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.34]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+[Informational] [xUnit.net 00:00:01.35]         ----- Inner Stack Trace -----
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Error] [xUnit.net 00:00:01.35]     TimeTrackerPro.Tests.Services.AuthServiceTests.LoginAsync_WithValidCredentials_ReturnsUserResponse [FAIL]
+[Informational] [xUnit.net 00:00:01.35]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.35]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.35]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.35]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+[Informational] [xUnit.net 00:00:01.35]         ----- Inner Stack Trace -----
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Error] [xUnit.net 00:00:01.35]     TimeTrackerPro.Tests.Services.AuthServiceTests.GetCurrentUserAsync_WithValidUserId_ReturnsUserResponse [FAIL]
+[Informational] [xUnit.net 00:00:01.35]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.35]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.35]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.35]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)
+[Informational] [xUnit.net 00:00:01.35]         ----- Inner Stack Trace -----
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceImpl(BindingFlags bindingAttr, Binder binder, Object[] args, CultureInfo culture)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Error] [xUnit.net 00:00:01.35]     TimeTrackerPro.Tests.Services.AuthServiceTests.RegisterAsync_WithDuplicateEmail_ThrowsInvalidOperationException [FAIL]
+[Informational] [xUnit.net 00:00:01.35]       System.ArgumentException : Can not instantiate proxy of class: TimeTrackerPro.Infrastructure.Persistence.TimeTrackerDbContext.
+[Informational] [xUnit.net 00:00:01.35]       Could not find a parameterless constructor. (Parameter 'constructorArguments')
+[Informational] [xUnit.net 00:00:01.35]       ---- System.MissingMethodException : Constructor on type 'Castle.Proxies.TimeTrackerDbContextProxy' not found.
+[Informational] [xUnit.net 00:00:01.35]       Stack Trace:
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxyInstance(Type proxyType, List`1 proxyArguments, Type classToProxy, Object[] constructorArguments)
+[Informational] [xUnit.net 00:00:01.35]            at Castle.DynamicProxy.ProxyGenerator.CreateClassProxy(Type classToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, Object[] constructorArguments, IInterceptor[] interceptors)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Interception/CastleProxyFactory.cs(110,0): at Moq.CastleProxyFactory.CreateProxy(Type mockType, IInterceptor interceptor, Type[] interfaces, Object[] arguments)
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(502,0): at Moq.Mock`1.InitializeInstance()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(516,0): at Moq.Mock`1.OnGetObject()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock.cs(180,0): at Moq.Mock.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         /_/src/Moq/Mock`1.cs(453,0): at Moq.Mock`1.get_Object()
+[Informational] [xUnit.net 00:00:01.35]         C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro\tests\TimeTrackerPro.Tests\Services\AuthServiceTests.cs(23,0): at TimeTrackerPro.Tests.Services.AuthServiceTests..ctor()
+[Informational] [xUnit.net 00:00:01.35]            at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean wrapExceptions)

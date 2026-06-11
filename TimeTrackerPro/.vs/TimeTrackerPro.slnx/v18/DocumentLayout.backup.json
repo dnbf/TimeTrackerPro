@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|c:\\users\\public\\aws-edu-projects\\timetrackerpro\\timetrackerpro\\src\\timetrackerpro.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BEE4BF1F-9149-92F9-3724-4FB7E4722DD0}|src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj|solutionrelative:src\\timetrackerpro.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -119,10 +123,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PROJECT_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GETTING_STARTED_NEXT_STEPS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
@@ -142,11 +142,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 24,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ActivityEntry.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Domain\\Entities\\ActivityEntry.cs",
@@ -198,7 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 0,
               "Title": "GETTING_STARTED_NEXT_STEPS.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\GETTING_STARTED_NEXT_STEPS.md",
               "RelativeDocumentMoniker": "GETTING_STARTED_NEXT_STEPS.md",
@@ -211,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "PROJECT_SUMMARY.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\PROJECT_SUMMARY.md",
               "RelativeDocumentMoniker": "PROJECT_SUMMARY.md",
@@ -224,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "TESTING_PHASE6_UNIT_TESTS.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE6_UNIT_TESTS.md",
               "RelativeDocumentMoniker": "TESTING_PHASE6_UNIT_TESTS.md",
@@ -237,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "DTOTests.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
               "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\DTOs\\DTOTests.cs",
@@ -250,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "PasswordHasherServiceTests.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
               "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\Services\\PasswordHasherServiceTests.cs",
@@ -263,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "TimeTrackerPro.Tests",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
               "RelativeDocumentMoniker": "tests\\TimeTrackerPro.Tests\\TimeTrackerPro.Tests.csproj",
@@ -276,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "COMPLETE_TESTING_GUIDE.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\COMPLETE_TESTING_GUIDE.md",
               "RelativeDocumentMoniker": "COMPLETE_TESTING_GUIDE.md",
@@ -289,7 +289,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "TESTING_PHASE5_REPORTS.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE5_REPORTS.md",
               "RelativeDocumentMoniker": "TESTING_PHASE5_REPORTS.md",
@@ -302,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "ReportsController.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\ReportsController.cs",
@@ -315,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ReportService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\ReportService.cs",
@@ -328,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "TimeByCategoryReportResponse.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\TimeByCategoryReportResponse.cs",
@@ -341,7 +341,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "DailySummaryReportResponse.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\DailySummaryReportResponse.cs",
@@ -354,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "TESTING_PHASE4_ACTIVITIES.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE4_ACTIVITIES.md",
               "RelativeDocumentMoniker": "TESTING_PHASE4_ACTIVITIES.md",
@@ -367,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Program.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Program.cs",
@@ -380,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "ActivitiesController.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\ActivitiesController.cs",
@@ -393,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ActivityEntryService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\ActivityEntryService.cs",
@@ -406,7 +406,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "UpdateActivityEntryRequest.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\UpdateActivityEntryRequest.cs",
@@ -419,7 +419,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ActivityEntryResponse.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\ActivityEntryResponse.cs",
@@ -432,7 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CreateActivityEntryRequest.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\CreateActivityEntryRequest.cs",
@@ -445,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "TESTING_PHASE3_AUTH.md",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\TESTING_PHASE3_AUTH.md",
               "RelativeDocumentMoniker": "TESTING_PHASE3_AUTH.md",
@@ -458,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\Services\\AuthService.cs",
@@ -471,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "TimeTrackerPro.Application.csproj",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\TimeTrackerPro.Application.csproj",
@@ -484,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\appsettings.json",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\appsettings.json",
@@ -496,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Api\\Controllers\\AuthController.cs",
@@ -509,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "JwtTokenService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Infrastructure\\Services\\JwtTokenService.cs",
@@ -521,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PasswordHasherService.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Infrastructure\\Services\\PasswordHasherService.cs",
@@ -533,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\LoginRequest.cs",
@@ -545,7 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "RegisterUserRequest.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\RegisterUserRequest.cs",
@@ -557,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserResponse.cs",
               "DocumentMoniker": "C:\\Users\\Public\\aws-edu-projects\\TimeTrackerPro\\TimeTrackerPro\\src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",
               "RelativeDocumentMoniker": "src\\TimeTrackerPro.Application\\DTOs\\UserResponse.cs",

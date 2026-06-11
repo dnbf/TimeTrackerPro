@@ -1,4 +1,4 @@
-# TimeTrackerPro - API REST Completa em .NET 10
+# TimeTrackerPro - Complete REST API in .NET 10
 
 <div align="center">
 
@@ -7,166 +7,151 @@
 [![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
 
-Um projeto de **demonstração prático** de uma API REST profissional em **C# .NET 10** com **6 fases de desenvolvimento**.
+A **practical demo project** of a professional REST API in **C# .NET 10** with **6 development phases**.
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Documentação](#-documentação) • [Testes](#-testes)
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Tests](#-tests)
 
 </div>
 
 ---
 
-## 🎯 O Que É?
+## 🎯 What Is It?
 
-**TimeTrackerPro** é uma API REST para rastrear e relatar o tempo gasto em atividades. 
+**TimeTrackerPro** is a REST API to track and report time spent on activities.
 
-Desenvolvida em **6 fases** com:
-- ✅ Autenticação JWT segura
-- ✅ CRUD de atividades com filtros
-- ✅ Geração de relatórios
-- ✅ 20 testes unitários
-- ✅ Banco de dados SQLite
-- ✅ Documentação completa
+Built in **6 phases** with:
+- ✅ Secure JWT authentication
+- ✅ Activity CRUD with filters
+- ✅ Report generation
+- ✅ 20 unit tests
+- ✅ SQLite database
+- ✅ Complete documentation
 
 ---
 
 ## ✨ Features
 
-### 🔐 Autenticação
-- [x] Registro de usuários
-- [x] Login com JWT
-- [x] Endpoint GET /me
-- [x] Hash seguro de senha (PBKDF2)
-- [x] Token de 60 minutos
+### 🔐 Authentication
+- [x] User registration
+- [x] Login with JWT
+- [x] GET /me endpoint
+- [x] Secure password hashing (PBKDF2)
+- [x] 60-minute token
 
-### 📝 Gerenciamento de Atividades
-- [x] Criar atividades
-- [x] Listar com filtros (data, categoria)
-- [x] Obter atividade específica
-- [x] Atualizar atividade
-- [x] Deletar atividade
-- [x] Cálculo automático de duração
+### 📝 Activity Management
+- [x] Create activities
+- [x] List with filters (date, category)
+- [x] Get single activity
+- [x] Update activity
+- [x] Delete activity
+- [x] Automatic duration calculation
 
-### 📊 Relatórios
-- [x] Tempo total por categoria
-- [x] Resumo diário de horas
-- [x] Filtros por data e categoria
-- [x] Conversão minutos → horas
+### 📊 Reports
+- [x] Total time per category
+- [x] Daily hours summary
+- [x] Filters by date and category
+- [x] Minutes → hours conversion
 
-### ✅ Qualidade
-- [x] 20 testes unitários
-- [x] 100% passando
-- [x] Arquitetura limpa
-- [x] Documentação completa
+### ✅ Quality
+- [x] 20 unit tests
+- [x] 100% passing
+- [x] Clean architecture
+- [x] Full documentation
 
 ---
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
+### Prerequisites
 - .NET 10 SDK
-- Visual Studio 2026 (ou VS Code)
+- Visual Studio 2026 (or VS Code)
 - Git
 
-### 1. Clonar o Repositório
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/dnbf/TimeTrackerPro.git
 cd TimeTrackerPro/TimeTrackerPro
 ```
 
-### 2. Compilar
+### 2. Build
 ```bash
 dotnet build
 ```
 
-### 3. Executar
+### 3. Run
 ```bash
 dotnet run --project src/TimeTrackerPro.Api
 ```
 
-### 4. Acessar Swagger
-```
+### 4. Open Swagger
+
 https://localhost:5001/swagger/index.html
-```
 
 ---
 
-## 📖 Documentação
+## 📖 Documentation
 
-### Guias de Teste
-| Guia | Descrição |
+### Testing Guides
+| Guide | Description |
 |------|-----------|
-| [COMPLETE_TESTING_GUIDE.md](./COMPLETE_TESTING_GUIDE.md) | Teste todos os 10+ endpoints |
-| [TESTING_PHASE3_AUTH.md](./TESTING_PHASE3_AUTH.md) | Testes de autenticação |
-| [TESTING_PHASE4_ACTIVITIES.md](./TESTING_PHASE4_ACTIVITIES.md) | Testes do CRUD |
-| [TESTING_PHASE5_REPORTS.md](./TESTING_PHASE5_REPORTS.md) | Testes de relatórios |
+| [COMPLETE_TESTING_GUIDE.md](./COMPLETE_TESTING_GUIDE.md) | Test all 10+ endpoints |
+| [TESTING_PHASE3_AUTH.md](./TESTING_PHASE3_AUTH.md) | Authentication tests |
+| [TESTING_PHASE4_ACTIVITIES.md](./TESTING_PHASE4_ACTIVITIES.md) | CRUD tests |
+| [TESTING_PHASE5_REPORTS.md](./TESTING_PHASE5_REPORTS.md) | Reports tests |
 
-### Guias de Referência
-| Guia | Descrição |
+### Reference Guides
+| Guide | Description |
 |------|-----------|
-| [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md) | Resumo técnico completo |
-| [GETTING_STARTED_NEXT_STEPS.md](./GETTING_STARTED_NEXT_STEPS.md) | Próximos passos |
+| [PROJECT_SUMMARY.md](./PROJECT_SUMMARY.md) | Full technical summary |
+| [GETTING_STARTED_NEXT_STEPS.md](./GETTING_STARTED_NEXT_STEPS.md) | Next steps |
 
 ---
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
-```
-TimeTrackerPro (Clean Architecture)
-├── API Layer           (Controllers)
-├── Application Layer   (Services, DTOs)
-├── Domain Layer        (Entities)
-└── Infrastructure      (DB, Password Hashing)
-```
 
-**Componentes:**
+TimeTrackerPro (Clean Architecture) ├── API Layer (Controllers) ├── Application Layer (Services, DTOs) ├── Domain Layer (Entities) └── Infrastructure (DB, Password Hashing)
+
+
+**Components:**
 - 3 Controllers
 - 8 DTOs
 - 5 Services
-- 2 Entidades
+- 2 Entities
 - 10+ Endpoints
 
 ---
 
-## 🔑 Endpoints Principais
+## 🔑 Main Endpoints
 
-### Autenticação
-```
-POST   /api/auth/register     Registrar
-POST   /api/auth/login        Fazer login
-GET    /api/auth/me           Dados do usuário
-```
+### Authentication
 
-### Atividades
-```
-POST   /api/activities              Criar
-GET    /api/activities              Listar (com filtros)
-GET    /api/activities/{id}         Obter específica
-PUT    /api/activities/{id}         Atualizar
-DELETE /api/activities/{id}         Deletar
-```
+POST /api/auth/register Register POST /api/auth/login Login GET /api/auth/me Get current user
 
-### Relatórios
-```
-GET    /api/reports/time-by-category    Por categoria
-GET    /api/reports/daily-summary       Resumo diário
-```
+### Activities
+
+POST /api/activities Create GET /api/activities List (with filters) GET /api/activities/{id} Get single PUT /api/activities/{id} Update DELETE /api/activities/{id} Delete
+
+### Reports
+
+GET /api/reports/time-by-category By category GET /api/reports/daily-summary Daily summary
 
 ---
 
-## 🧪 Testes
+## 🧪 Tests
 
-### Executar Testes
-```bash
+### Run Tests
+ 
+Bash:
 dotnet test tests/TimeTrackerPro.Tests/TimeTrackerPro.Tests.csproj
-```
 
-### Resultado Esperado
-```
-========== 20 Testes (20 Aprovados, 0 Com falha) ==========
-```
 
-### Cobertura
-| Componente | Testes |
+### Expected Result
+
+========== 20 Tests (20 Passed, 0 Failed) ==========
+
+### Coverage
+| Component | Tests |
 |-----------|--------|
 | PasswordHasher | 10 |
 | DTOs | 10 |
@@ -174,31 +159,34 @@ dotnet test tests/TimeTrackerPro.Tests/TimeTrackerPro.Tests.csproj
 
 ---
 
-## 🔒 Segurança
+## 🔒 Security
 
 - ✅ JWT Bearer Authentication
-- ✅ PBKDF2 Password Hashing (10.000 iterações)
-- ✅ Isolamento de dados por usuário
-- ✅ Validação de entrada
-- ⚠️ ⚠️ **Mudar JWT SecretKey em produção** ⚠️ ⚠️
+- ✅ PBKDF2 Password Hashing (10,000 iterations)
+- ✅ Per-user data isolation
+- ✅ Input validation
+- ⚠️ ⚠️ **Change JWT SecretKey in production** ⚠️ ⚠️
 
 ---
 
-## 📦 Dependências
+## 📦 Dependencies
 
 - **Microsoft.AspNetCore.Authentication.JwtBearer**: 10.0.9
 - **Microsoft.EntityFrameworkCore**: 10.0.9
 - **Microsoft.EntityFrameworkCore.Sqlite**: 10.0.9
 - **System.IdentityModel.Tokens.Jwt**: 8.2.1
-- **Moq**: 4.20.70 (testes)
-- **xUnit**: 2.9.3 (testes)
+- **Moq**: 4.20.70 (tests)
+- **xUnit**: 2.9.3 (tests)
 
 ---
 
-## 📊 Exemplo de Uso
+## 📊 Usage Example
 
-### 1. Registrar
-```bash
+### 1. Register
+
+bash
+Copiar
+
 curl -X POST https://localhost:5001/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
@@ -206,10 +194,15 @@ curl -X POST https://localhost:5001/api/auth/register \
     "email": "joao@example.com",
     "password": "SecurePassword123"
   }'
-```
 
-### 2. Criar Atividade
-```bash
+
+
+
+### 2. Create Activity
+
+bash
+Copiar
+
 curl -X POST https://localhost:5001/api/activities \
   -H "Authorization: Bearer {token}" \
   -H "Content-Type: application/json" \
@@ -218,97 +211,102 @@ curl -X POST https://localhost:5001/api/activities \
     "startTime": "09:00:00",
     "endTime": "11:30:00",
     "category": 1,
-    "description": "Desenvolvimento"
+    "description": "Development"
   }'
-```
 
-### 3. Obter Relatório
-```bash
+
+
+
+### 3. Get Report
+
+bash
+Copiar
+
 curl -X GET 'https://localhost:5001/api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-15' \
   -H "Authorization: Bearer {token}"
-```
+
+
+
 
 ---
 
-## 🎯 6 Fases do Projeto
+## 🎯 6 Project Phases
 
-| Fase | Descrição | Status |
+| Phase | Description | Status |
 |------|-----------|--------|
-| **1** | Setup (5 projetos C#) | ✅ |
-| **2** | Domínio + EF Core | ✅ |
-| **3** | Autenticação JWT | ✅ |
-| **4** | CRUD de Atividades | ✅ |
-| **5** | Relatórios | ✅ |
-| **6** | Testes Unitários | ✅ |
+| **1** | Setup (5 C# projects) | ✅ |
+| **2** | Domain + EF Core | ✅ |
+| **3** | JWT Authentication | ✅ |
+| **4** | Activity CRUD | ✅ |
+| **5** | Reports | ✅ |
+| **6** | Unit Tests | ✅ |
 
 ---
 
-## 💾 Banco de Dados
+## 💾 Database
 
-**SQLite** com **Entity Framework Core**
+**SQLite** with **Entity Framework Core**
 
-**Tabelas:**
-- `Users` - Usuários do sistema
-- `ActivityEntries` - Atividades rastreadas
+**Tables:**
+- `Users` - System users
+- `ActivityEntries` - Tracked activities
 
-Migrações automáticas na primeira execução.
+Automatic migrations on first run.
 
 ---
 
 ## 🚀 Deployment
 
 ### Local
-```bash
+
+bash
+Copiar
+
 dotnet run --project src/TimeTrackerPro.Api
-```
+
+
+
 
 ### Docker
-```bash
+
+bash
+Copiar
+
 docker build -t timetrackerpo .
 docker run -p 5001:5001 timetrackerpo
-```
 
-### Produção
-Veja [GETTING_STARTED_NEXT_STEPS.md](./GETTING_STARTED_NEXT_STEPS.md)
 
----
 
-## 📚 Estrutura de Arquivos
 
-```
-TimeTrackerPro/
-├── src/
-│   ├── TimeTrackerPro.Api/
-│   ├── TimeTrackerPro.Application/
-│   ├── TimeTrackerPro.Domain/
-│   └── TimeTrackerPro.Infrastructure/
-├── tests/
-│   └── TimeTrackerPro.Tests/
-├── *.md (Documentação)
-└── TimeTrackerPro.sln
-```
+### Production
+See [GETTING_STARTED_NEXT_STEPS.md](./GETTING_STARTED_NEXT_STEPS.md)
 
 ---
 
-## 🛠️ Desenvolvimento
-
-### Estrutura do Código
-- **Controllers**: Lidam com requisições HTTP
-- **Services**: Lógica de negócio
-- **DTOs**: Transferência de dados
-- **Entities**: Modelos de domínio
-- **DbContext**: Acesso ao banco
-
-### Adicionar Nova Feature
-1. Criar modelo em Domain
-2. Adicionar service em Application
-3. Criar controller em Api
-4. Registrar no Program.cs
-5. Adicionar testes
+## 📚 File Structure
+TimeTrackerPro/ ├── src/ │ ├── TimeTrackerPro.Api/ │ ├── TimeTrackerPro.Application/ │ ├── TimeTrackerPro.Domain/ │ └── TimeTrackerPro.Infrastructure/ ├── tests/ │ └── TimeTrackerPro.Tests/ ├── *.md (Documentation) └── TimeTrackerPro.sln
 
 ---
 
-## 📝 Categorias de Atividade
+## 🛠️ Development
+
+### Code Structure
+- **Controllers**: Handle HTTP requests
+- **Services**: Business logic
+- **DTOs**: Data transfer
+- **Entities**: Domain models
+- **DbContext**: Database access
+
+### Add a New Feature
+1. Create model in Domain
+2. Add service in Application
+3. Create controller in Api
+4. Register in Program.cs
+5. Add tests
+
+---
+
+## 📝 Activity Categories
 
 - `1` - Development
 - `2` - Meeting
@@ -319,71 +317,83 @@ TimeTrackerPro/
 
 ---
 
-## 🎓 O Que Você Aprenderá
+## 🎓 What You’ll Learn
 
-- ✅ Clean Architecture em .NET
+- ✅ Clean Architecture in .NET
 - ✅ JWT Authentication
 - ✅ Entity Framework Core
 - ✅ Secure Password Hashing
 - ✅ REST API Design
-- ✅ Unit Testing com xUnit
+- ✅ Unit Testing with xUnit
 - ✅ Dependency Injection
 - ✅ SOLID Principles
 
 ---
 
-## ⚠️ Avisos Importantes
+## ⚠️ Important Warnings
 
-### Produção
-- 🔴 **Mudar JWT SecretKey** - Use uma chave aleatória com 32+ caracteres
-- 🔴 **Habilitar HTTPS** - Certificado SSL válido
-- 🔴 **Usar PostgreSQL** - Em vez de SQLite
-- 🔴 **Implementar Rate Limiting** - Proteção contra DDoS
-- 🔴 **Adicionar Logging** - Monitoramento
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para grandes mudanças:
-1. Fork o repositório
-2. Crie uma feature branch
-3. Faça commit das mudanças
-4. Push para a branch
-5. Abra um Pull Request
+### Production
+- 🔴 **Change JWT SecretKey** – Use a random key with 32+ characters
+- 🔴 **Enable HTTPS** – Valid SSL certificate
+- 🔴 **Use PostgreSQL** – Instead of SQLite
+- 🔴 **Implement Rate Limiting** – Protect against DDoS
+- 🔴 **Add Logging** – Monitoring
 
 ---
 
-## 📄 Licença
+## 🤝 Contributing
 
-MIT License - veja LICENSE para detalhes
-
----
-
-## 📞 Suporte
-
-- 📖 Consulte a documentação em `*.md`
-- 💬 Abra uma Issue
-- 📧 Contacte: dnbf@github.com
+Contributions are welcome! For major changes:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
 
 ---
 
-## 🎉 Agradecimentos
+## 📄 License
 
-Obrigado por usar TimeTrackerPro!
+MIT License – see LICENSE for details
 
-Se este projeto foi útil, considere dar uma ⭐!
+---
+
+## 📞 Support
+
+- 📖 Check the documentation in `*.md`
+- 💬 Open an Issue
+- 📧 Contact: dnbf@github.com
+
+---
+
+## 🎉 Thanks
+
+Thanks for using TimeTrackerPro!
+
+If this project was helpful, consider giving it a ⭐!
 
 ---
 
 <div align="center">
 
-**Desenvolvido com ❤️ usando .NET 10 e C# 12**
+**Built with ❤️ using .NET 10 and C# 12**
 
 [![GitHub](https://img.shields.io/badge/GitHub-dnbf%2FTimeTrackerPro-blue?logo=github)](https://github.com/dnbf/TimeTrackerPro)
 [![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?logo=.net)](https://dotnet.microsoft.com/download/dotnet/10.0)
 [![C#](https://img.shields.io/badge/C%23-12-239120?logo=c%23)](https://docs.microsoft.com/en-us/dotnet/csharp/)
 
-**Status: ✅ COMPLETO E PRONTO PARA PRODUÇÃO**
+**Status: ✅ COMPLETE AND PRODUCTION-READY**
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
