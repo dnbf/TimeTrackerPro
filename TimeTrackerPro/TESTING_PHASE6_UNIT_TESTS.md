@@ -1,166 +1,166 @@
-# ✅ Fase 6 - Qualidade Mínima - Testes Unitários
+# ✅ Phase 6 - Minimum Quality - Unit Tests
 
-## 📊 Resumo da Implementação
+## 📊 Implementation Summary
 
-### Testes Implementados: 20 ✅
-- **10 testes** de PasswordHasherService
-- **10 testes** de DTOs (Data Transfer Objects)
+### Tests Implemented: 20 ✅
+- **10 tests** for `PasswordHasherService`
+- **10 tests** for DTOs (Data Transfer Objects)
 
-### Status: ✅ 20/20 PASSANDO
+### Status: ✅ 20/20 PASSING
 
 ---
 
-## 🔐 PasswordHasherService Tests (10 testes)
+## 🔐 `PasswordHasherService` Tests (10 tests)
 
 ### 1. `HashPassword_WithValidPassword_ReturnsHash`
-**Objetivo:** Validar que uma senha válida é hasheada e retorna um valor diferente
-- ✅ Hash não é vazio
-- ✅ Hash é diferente da senha original
+**Goal:** Verify that a valid password is hashed and returns a different value
+- ✅ Hash is not empty
+- ✅ Hash is different from the original password
 
 ### 2. `HashPassword_WithSamePassword_ReturnsDifferentHashes`
-**Objetivo:** Validar que a mesma senha gera hashes diferentes (sal aleatório)
-- ✅ Cada chamada de hash gera resultado diferente
-- ✅ Segurança contra ataques rainbow table
+**Goal:** Verify that the same password generates different hashes (random salt)
+- ✅ Each hash call produces a different result
+- ✅ Protection against rainbow table attacks
 
 ### 3. `VerifyPassword_WithCorrectPassword_ReturnsTrue`
-**Objetivo:** Validar que uma senha correta é verificada com sucesso
-- ✅ Senha e hash corretos retornam `true`
+**Goal:** Verify that a correct password is successfully validated
+- ✅ Correct password and hash return `true`
 
 ### 4. `VerifyPassword_WithIncorrectPassword_ReturnsFalse`
-**Objetivo:** Validar que uma senha incorreta falha na verificação
-- ✅ Senha errada retorna `false`
+**Goal:** Verify that an incorrect password fails validation
+- ✅ Wrong password returns `false`
 
 ### 5. `VerifyPassword_WithEmptyPassword_ReturnsFalse`
-**Objetivo:** Validar que senha vazia falha
-- ✅ Retorna `false` para string vazia
+**Goal:** Verify that an empty password fails
+- ✅ Returns `false` for an empty string
 
 ### 6. `VerifyPassword_WithEmptyHash_ReturnsFalse`
-**Objetivo:** Validar que hash vazio falha
-- ✅ Retorna `false` para hash vazio
+**Goal:** Verify that an empty hash fails
+- ✅ Returns `false` for an empty hash
 
 ### 7. `VerifyPassword_WithNullPassword_ReturnsFalse`
-**Objetivo:** Validar que senha nula falha
-- ✅ Retorna `false` para null
+**Goal:** Verify that a null password fails
+- ✅ Returns `false` for null
 
 ### 8. `VerifyPassword_WithNullHash_ReturnsFalse`
-**Objetivo:** Validar que hash nulo falha
-- ✅ Retorna `false` para hash nulo
+**Goal:** Verify that a null hash fails
+- ✅ Returns `false` for null hash
 
 ### 9. `HashPassword_WithEmptyPassword_ThrowsException`
-**Objetivo:** Validar que hash vazio lança exceção
-- ✅ Lança `ArgumentException`
+**Goal:** Verify that hashing an empty password throws an exception
+- ✅ Throws `ArgumentException`
 
 ### 10. `HashPassword_WithNullPassword_ThrowsException`
-**Objetivo:** Validar que hash nulo lança exceção
-- ✅ Lança `ArgumentException`
+**Goal:** Verify that hashing a null password throws an exception
+- ✅ Throws `ArgumentException`
 
 ---
 
-## 📋 DTO Tests (10 testes)
+## 📋 DTO Tests (10 tests)
 
 ### 1. `RegisterUserRequest_HasAllProperties`
-**Objetivo:** Validar que RegisterUserRequest tem todas as propriedades
+**Goal:** Verify that `RegisterUserRequest` has all properties
 - ✅ Name, Email, Password
 
 ### 2. `LoginRequest_HasAllProperties`
-**Objetivo:** Validar que LoginRequest tem todas as propriedades
+**Goal:** Verify that `LoginRequest` has all properties
 - ✅ Email, Password
 
 ### 3. `UserResponse_HasAllProperties`
-**Objetivo:** Validar que UserResponse tem todas as propriedades
+**Goal:** Verify that `UserResponse` has all properties
 - ✅ Id (GUID), Name, Email, Token
 
 ### 4. `CreateActivityEntryRequest_CalculatesDuration`
-**Objetivo:** Validar cálculo correto de duração
-- ✅ 2.5 horas = 150 minutos
-- ✅ TimeSpan subtração funciona corretamente
+**Goal:** Verify correct duration calculation
+- ✅ 2.5 hours = 150 minutes
+- ✅ TimeSpan subtraction works correctly
 
 ### 5. `UpdateActivityEntryRequest_HasAllProperties`
-**Objetivo:** Validar que UpdateActivityEntryRequest tem todas as propriedades
+**Goal:** Verify that `UpdateActivityEntryRequest` has all properties
 - ✅ Date, StartTime, EndTime, Category, Description
 
 ### 6. `ActivityEntryResponse_HasAllProperties`
-**Objetivo:** Validar que ActivityEntryResponse tem todas as propriedades
+**Goal:** Verify that `ActivityEntryResponse` has all properties
 - ✅ Id, UserId, Date, StartTime, EndTime, DurationMinutes, Category, Description, CreatedAt
 
 ### 7. `TimeByCategoryReportResponse_HasAllProperties`
-**Objetivo:** Validar que TimeByCategoryReportResponse tem todas as propriedades
+**Goal:** Verify that `TimeByCategoryReportResponse` has all properties
 - ✅ Category, TotalMinutes, TotalHours, ActivityCount
 
 ### 8. `DailySummaryReportResponse_HasAllProperties`
-**Objetivo:** Validar que DailySummaryReportResponse tem todas as propriedades
+**Goal:** Verify that `DailySummaryReportResponse` has all properties
 - ✅ Date, TotalMinutes, TotalHours, ActivityCount
 
 ### 9. `TimeByCategoryReportResponse_HoursCalculationIsCorrect`
-**Objetivo:** Validar conversão correta de minutos para horas
-- ✅ 90 minutos = 1.5 horas
-- ✅ 2 casas decimais
+**Goal:** Verify correct conversion from minutes to hours
+- ✅ 90 minutes = 1.5 hours
+- ✅ 2 decimal places
 
 ### 10. `DailySummaryReportResponse_HoursCalculationIsCorrect`
-**Objetivo:** Validar conversão correta de minutos para horas
-- ✅ 195 minutos = 3.25 horas
-- ✅ Precisão de 2 casas decimais
+**Goal:** Verify correct conversion from minutes to hours
+- ✅ 195 minutes = 3.25 hours
+- ✅ Precision to 2 decimal places
 
 ---
 
-## 🏃 Como Executar os Testes
+## 🏃 How to Run the Tests
 
-### No Visual Studio:
-1. **Test Explorer**: `Test > Test Explorer` ou `Ctrl + E, T`
-2. **Run All Tests**: Clique no botão "Run All Tests"
-3. **Ou execute no terminal**:
+### In Visual Studio:
+1. **Test Explorer**: `Test > Test Explorer` or `Ctrl + E, T`
+2. **Run All Tests**: Click the “Run All Tests” button
+3. **Or run from the terminal**:
 ```powershell
 cd C:\Users\Public\aws-edu-projects\TimeTrackerPro\TimeTrackerPro
 dotnet test tests/TimeTrackerPro.Tests/TimeTrackerPro.Tests.csproj
 ```
 
-### Resultado Esperado:
-```
-========== Execução de teste concluída: 20 Testes (20 Aprovados, 0 Com falha, 0 Ignorados) ===========
-```
+### Expected Result:
+========== Test run completed: 20 Tests (20 Passed, 0 Failed, 0 Skipped) ===========
 
 ---
 
-## 📊 Cobertura de Testes
+## 📊 Test Coverage
 
-| Componente | Testes | Status |
+| Component | Tests | Status |
 |-----------|--------|--------|
-| PasswordHasherService | 10/10 | ✅ 100% |
+| `PasswordHasherService` | 10/10 | ✅ 100% |
 | DTOs | 10/10 | ✅ 100% |
 | **Total** | **20/20** | **✅ 100%** |
 
 ---
 
-## 🔍 O Que Está Testado
+## 🔍 What Is Covered
 
-### Segurança (PasswordHasherService)
-- ✅ Hash com salt aleatório
-- ✅ Verificação de senha segura
-- ✅ Tratamento de entrada inválida
+### Security (`PasswordHasherService`)
+- ✅ Random salt hashing
+- ✅ Secure password verification
+- ✅ Invalid input handling
 
-### Integridade de Dados (DTOs)
-- ✅ Todas as propriedades presentes
-- ✅ Cálculos corretos (duração, horas)
-- ✅ Tipos de dados corretos
+### Data Integrity (DTOs)
+- ✅ All properties present
+- ✅ Correct calculations (duration, hours)
+- ✅ Correct data types
 
-### Tratamento de Erros
-- ✅ Exceções para entrada inválida
-- ✅ Retorno false para dados inválidos
+### Error Handling
+- ✅ Exceptions for invalid input
+- ✅ `false` return for invalid data
 
 ---
 
-## 🚀 Próximos Passos (Opcional - Fase 6+)
+## 🚀 Next Steps (Optional - Phase 6+)
 
-Para uma cobertura mais completa, você poderia adicionar:
+For broader coverage, you could add:
 
-1. **Integration Tests** - testar serviços com banco de dados real
-2. **Controller Tests** - testar endpoints com Moq
-3. **Validation Tests** - testar validações de negócio
-4. **E2E Tests** - testar fluxos completos
+1. **Integration Tests** - test services with a real database
+2. **Controller Tests** - test endpoints with Moq
+3. **Validation Tests** - test business rule validations
+4. **E2E Tests** - test full flows
 
-Exemplo:
-```csharp
-// Exemplo de teste de integração futuro
+Example:
+
+csharp
+
+// Example future integration test
 [Fact]
 public async Task Register_SavesUserToDatabase()
 {
@@ -175,54 +175,56 @@ public async Task Register_SavesUserToDatabase()
     var user = context.Users.Find(result.Id);
     Assert.NotNull(user);
 }
-```
+
+
+
 
 ---
 
-## ✅ Checklist - Fase 6 Completa
+## ✅ Phase 6 Completion Checklist
 
-- [x] 10+ testes implementados
-- [x] 100% de testes passando
-- [x] PasswordHasherService testado completamente
-- [x] DTOs testados
-- [x] Documentação de testes
-- [x] Fácil executar via Visual Studio ou CLI
-
----
-
-## 📝 Resumo Executivo
-
-A **Fase 6** implementa testes unitários básicos cobrindo:
-- **Segurança**: Hashing e verificação de senhas
-- **Integridade**: Estrutura correta de DTOs
-- **Cálculos**: Duração de atividades e conversão de horas
-
-**Total: 20 testes passando ✅**
-
-O projeto TimeTrackerPro agora tem uma base sólida de testes que garantem a qualidade do código!
+- [x] 10+ tests implemented
+- [x] 100% of tests passing
+- [x] `PasswordHasherService` fully tested
+- [x] DTOs tested
+- [x] Test documentation
+- [x] Easy to run via Visual Studio or CLI
 
 ---
 
-## 🎓 O que foi aprendido
+## 📝 Executive Summary
 
-1. **xUnit Framework** - criação e execução de testes
-2. **Arrange-Act-Assert Pattern** - estrutura de testes
-3. **Testes Unitários** - testes isolados e independentes
-4. **Segurança** - como testar hashing de senhas
-5. **Validação de DTOs** - testes de estrutura de dados
+**Phase 6** implements basic unit tests covering:
+- **Security**: password hashing and verification
+- **Integrity**: correct DTO structure
+- **Calculations**: activity duration and hours conversion
 
----
+**Total: 20 passing tests ✅**
 
-## 📚 Recursos
-
-- **xUnit Documentation**: https://xunit.net/
-- **.NET Testing Best Practices**: https://docs.microsoft.com/en-us/dotnet/core/testing/
-- **Unit Testing Principles**: https://martinfowler.com/bliki/UnitTest.html
+The TimeTrackerPro project now has a solid testing foundation that helps ensure code quality!
 
 ---
 
-## 🎯 Conclusão
+## 🎓 What Was Learned
 
-**Fase 6 - Qualidade Mínima - CONCLUÍDA COM SUCESSO! ✅**
+1. **xUnit Framework** - test creation and execution
+2. **Arrange-Act-Assert Pattern** - test structure
+3. **Unit Testing** - isolated and independent tests
+4. **Security** - how to test password hashing
+5. **DTO Validation** - testing data structure
 
-Todos os testes estão passando e o projeto tem uma base sólida de testes unitários!
+---
+
+## 📚 Resources
+
+- **xUnit Documentation**: <a href="https://xunit.net/" target="_blank" style="text-decoration: underline;">https://xunit.net/</a>
+- **.NET Testing Best Practices**: <a href="https://docs.microsoft.com/en-us/dotnet/core/testing/" target="_blank" style="text-decoration: underline;">https://docs.microsoft.com/en-us/dotnet/core/testing/</a>
+- **Unit Testing Principles**: <a href="https://martinfowler.com/bliki/UnitTest.html" target="_blank" style="text-decoration: underline;">https://martinfowler.com/bliki/UnitTest.html</a>
+
+---
+
+## 🎯 Conclusion
+
+**Phase 6 - Minimum Quality - SUCCESSFULLY COMPLETED! ✅**
+
+All tests are passing and the project has a solid unit testing foundation!

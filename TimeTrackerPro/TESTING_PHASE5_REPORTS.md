@@ -1,18 +1,18 @@
-# 🧪 Teste de Relatórios - Fase 5
+# 🧪 Reports Testing – Phase 5
 
-## Pré-requisitos
-- API rodando em `https://localhost:5001`
-- Usuário registrado com token JWT
-- Pelo menos 3-4 atividades criadas em datas diferentes
-- Postman, Thunder Client, ou similar
+## Prerequisites
+- API running at `https://localhost:5001`
+- Registered user with JWT token
+- At least 3–4 activities created on different dates
+- Postman, Thunder Client, or similar
 
 ---
 
-## Setup: Criar dados de teste
+## Setup: Create test data
 
-Antes de testar os relatórios, crie várias atividades. Exemplo:
+Before testing the reports, create several activities. Example:
 
-### Atividade 1 - 15 de janeiro
+### Activity 1 – January 15
 **POST /api/activities**
 ```json
 {
@@ -20,12 +20,12 @@ Antes de testar os relatórios, crie várias atividades. Exemplo:
   "startTime": "09:00:00",
   "endTime": "11:00:00",
   "category": 1,
-  "description": "Desenvolvimento - Manha"
+  "description": "Development - Morning"
 }
 ```
-**Esperado:** DurationMinutes = 120 minutos
+**Expected:** DurationMinutes = 120 minutes
 
-### Atividade 2 - 15 de janeiro
+### Activity 2 – January 15
 **POST /api/activities**
 ```json
 {
@@ -33,12 +33,12 @@ Antes de testar os relatórios, crie várias atividades. Exemplo:
   "startTime": "14:00:00",
   "endTime": "15:30:00",
   "category": 1,
-  "description": "Desenvolvimento - Tarde"
+  "description": "Development - Afternoon"
 }
 ```
-**Esperado:** DurationMinutes = 90 minutos
+**Expected:** DurationMinutes = 90 minutes
 
-### Atividade 3 - 15 de janeiro
+### Activity 3 – January 15
 **POST /api/activities**
 ```json
 {
@@ -46,12 +46,12 @@ Antes de testar os relatórios, crie várias atividades. Exemplo:
   "startTime": "16:00:00",
   "endTime": "17:00:00",
   "category": 2,
-  "description": "Reuniao"
+  "description": "Meeting"
 }
 ```
-**Esperado:** DurationMinutes = 60 minutos
+**Expected:** DurationMinutes = 60 minutes
 
-### Atividade 4 - 16 de janeiro
+### Activity 4 – January 16
 **POST /api/activities**
 ```json
 {
@@ -59,12 +59,12 @@ Antes de testar os relatórios, crie várias atividades. Exemplo:
   "startTime": "09:00:00",
   "endTime": "12:30:00",
   "category": 1,
-  "description": "Desenvolvimento"
+  "description": "Development"
 }
 ```
-**Esperado:** DurationMinutes = 210 minutos
+**Expected:** DurationMinutes = 210 minutes
 
-### Atividade 5 - 16 de janeiro
+### Activity 5 – January 16
 **POST /api/activities**
 ```json
 {
@@ -72,25 +72,25 @@ Antes de testar os relatórios, crie várias atividades. Exemplo:
   "startTime": "13:00:00",
   "endTime": "14:00:00",
   "category": 3,
-  "description": "Estudo"
+  "description": "Study"
 }
 ```
-**Esperado:** DurationMinutes = 60 minutos
+**Expected:** DurationMinutes = 60 minutes
 
 ---
 
-## Passo 1: Relatório de Tempo por Categoria (sem filtro)
+## Step 1: Time by Category report (no category filter)
 
 **Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 [
   {
     "category": "Development",
@@ -111,34 +111,36 @@ Content-Type: application/json
     "activityCount": 1
   }
 ]
-```
 
-**Cálculos:**
-- Development: 120 + 90 + 210 = 420 minutos = 7.0 horas (3 atividades)
-- Meeting: 60 minutos = 1.0 hora (1 atividade)
-- Study: 60 minutos = 1.0 hora (1 atividade)
 
-**Validações:**
-- ✅ Soma correta de minutos por categoria
-- ✅ Conversão correta para horas (minutos / 60)
-- ✅ Contagem correta de atividades
-- ✅ Retorna apenas categorias com atividades
-- ✅ Ordenação alfabética por categoria
+
+
+**Calculations:**
+- Development: 120 + 90 + 210 = 420 minutes = 7.0 hours (3 activities)
+- Meeting: 60 minutes = 1.0 hour (1 activity)
+- Study: 60 minutes = 1.0 hour (1 activity)
+
+**Validations:**
+- ✅ Correct sum of minutes per category
+- ✅ Correct conversion to hours (minutes / 60)
+- ✅ Correct activity counts
+- ✅ Only categories with activities are returned
+- ✅ Categories sorted alphabetically
 
 ---
 
-## Passo 2: Relatório de Tempo por Categoria (com filtro de categoria)
+## Step 2: Time by Category report (with category filter)
 
 **Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16&category=1`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 [
   {
     "category": "Development",
@@ -147,27 +149,29 @@ Content-Type: application/json
     "activityCount": 3
   }
 ]
-```
 
-**Validações:**
-- ✅ Filtra corretamente apenas Development (categoria 1)
-- ✅ Somatório está correto
-- ✅ Outras categorias não aparecem
+
+
+
+**Validations:**
+- ✅ Correctly filters only Development (category 1)
+- ✅ Totals are correct
+- ✅ Other categories do not appear
 
 ---
 
-## Passo 3: Relatório Diário (Daily Summary)
+## Step 3: Daily Summary report
 
 **Endpoint:** `GET /api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-16`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 [
   {
     "date": "2024-01-15",
@@ -182,32 +186,34 @@ Content-Type: application/json
     "activityCount": 2
   }
 ]
-```
 
-**Cálculos:**
-- 15 de janeiro: 120 + 90 + 60 = 270 minutos = 4.5 horas (3 atividades)
-- 16 de janeiro: 210 + 60 = 270 minutos = 4.5 horas (2 atividades)
 
-**Validações:**
-- ✅ Soma correta de minutos por dia
-- ✅ Conversão correta para horas
-- ✅ Contagem correta de atividades
-- ✅ Ordenação crescente por data
+
+
+**Calculations:**
+- January 15: 120 + 90 + 60 = 270 minutes = 4.5 hours (3 activities)
+- January 16: 210 + 60 = 270 minutes = 4.5 hours (2 activities)
+
+**Validations:**
+- ✅ Correct sum of minutes per day
+- ✅ Correct conversion to hours
+- ✅ Correct activity counts
+- ✅ Dates in ascending order
 
 ---
 
-## Passo 4: Relatório com intervalo menor
+## Step 4: Report with smaller range
 
 **Endpoint:** `GET /api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-15`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 [
   {
     "date": "2024-01-15",
@@ -216,117 +222,126 @@ Content-Type: application/json
     "activityCount": 3
   }
 ]
-```
 
-**Validações:**
-- ✅ Retorna apenas atividades de 15 de janeiro
+
+
+
+**Validations:**
+- ✅ Returns only activities from January 15
 
 ---
 
-## Passo 5: Relatório com data sem atividades
+## Step 5: Report with dates with no activities
 
 **Endpoint:** `GET /api/reports/daily-summary?startDate=2024-01-20&endDate=2024-01-25`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 []
-```
 
-**Validações:**
-- ✅ Retorna lista vazia se nenhuma atividade no intervalo
+
+
+
+**Validations:**
+- ✅ Returns empty list if there are no activities in the range
 
 ---
 
-## Passo 6: Relatório de categoria específica sem dados
+## Step 6: Specific category report with no data
 
 **Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16&category=5`
 
-(Categoria 5 = Break, que não foi criada nos dados de teste)
+(Category 5 = Break, which we didn’t create in test data)
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 []
-```
 
-**Validações:**
-- ✅ Retorna lista vazia se categoria não tem atividades
 
----
 
-## ⚠️ Testes de erro
 
-### Teste 1: Sem token
-**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16`
-**Sem header Authorization**
-**Esperado:** 401 Unauthorized
-
-### Teste 2: StartDate faltando
-**Endpoint:** `GET /api/reports/time-by-category?endDate=2024-01-16`
-**Esperado:** 400 Bad Request - "startDate and endDate are required"
-
-### Teste 3: EndDate faltando
-**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15`
-**Esperado:** 400 Bad Request - "startDate and endDate are required"
-
-### Teste 4: StartDate > EndDate
-**Endpoint:** `GET /api/reports/daily-summary?startDate=2024-01-20&endDate=2024-01-15`
-**Esperado:** 400 Bad Request - "Start date must be before or equal to end date"
-
-### Teste 5: Formato de data inválido
-**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-13-01&endDate=2024-01-16`
-**Esperado:** 400 Bad Request (validação de formato)
+**Validations:**
+- ✅ Returns empty list if the category has no activities
 
 ---
 
-## 📋 Testes com múltiplos usuários
+## ⚠️ Error tests
 
-1. **Crie Usuário A com atividades de 15-16 jan**
-2. **Crie Usuário B com atividades de 20-21 jan**
-3. **Faça login com Usuário A**
+### Test 1: No token
+**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16`  
+**No Authorization header**  
+**Expected:** 401 Unauthorized
+
+### Test 2: Missing startDate
+**Endpoint:** `GET /api/reports/time-by-category?endDate=2024-01-16`  
+**Expected:** 400 Bad Request – "startDate and endDate are required"
+
+### Test 3: Missing endDate
+**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-01-15`  
+**Expected:** 400 Bad Request – "startDate and endDate are required"
+
+### Test 4: StartDate > EndDate
+**Endpoint:** `GET /api/reports/daily-summary?startDate=2024-01-20&endDate=2024-01-15`  
+**Expected:** 400 Bad Request – "Start date must be before or equal to end date"
+
+### Test 5: Invalid date format
+**Endpoint:** `GET /api/reports/time-by-category?startDate=2024-13-01&endDate=2024-01-16`  
+**Expected:** 400 Bad Request (format validation)
+
+---
+
+## 📋 Tests with multiple users
+
+1. **Create User A with activities on Jan 15–16**  
+2. **Create User B with activities on Jan 20–21**  
+3. **Log in as User A**  
 4. **GET /api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-16**
 
-**Esperado:**
-- Retorna apenas atividades do Usuário A
-- Não inclui atividades do Usuário B
-- Relatório contém dados corretos do Usuário A
+**Expected:**
+- Only activities from User A appear
+- No activities from User B
+- Report data is correct for User A
 
 ---
 
-## ✅ Checklist de conclusão
+## ✅ Completion checklist
 
-- [ ] GET /api/reports/time-by-category retorna dados corretos
-- [ ] TotalMinutes está correto
-- [ ] TotalHours está correto (minutos/60)
-- [ ] ActivityCount está correto
-- [ ] Categorias estão em ordem alfabética
-- [ ] Filtro de categoria funciona
-- [ ] GET /api/reports/daily-summary retorna dados corretos
-- [ ] Datas estão em ordem crescente
-- [ ] Apenas atividades do usuário autenticado aparecem
-- [ ] Retorna lista vazia se sem dados no intervalo
-- [ ] StartDate > EndDate retorna erro
-- [ ] Datas faltando retornam erro
-- [ ] Sem token retorna 401
-- [ ] Conversão de horas é precisa (2 casas decimais)
+- [ ] GET /api/reports/time-by-category returns correct data
+- [ ] TotalMinutes is correct
+- [ ] TotalHours is correct (minutes/60)
+- [ ] ActivityCount is correct
+- [ ] Categories in alphabetical order
+- [ ] Category filter works
+- [ ] GET /api/reports/daily-summary returns correct data
+- [ ] Dates in ascending order
+- [ ] Only authenticated user’s activities appear
+- [ ] Empty list when no data in range
+- [ ] StartDate > EndDate returns error
+- [ ] Missing dates return error
+- [ ] No token returns 401
+- [ ] Hour conversion is precise (2 decimal places)
 
 ---
 
-## 📊 Exemplo de payload JSON decodificado para diferentes cenários
+## 📊 Example decoded JSON payloads for different scenarios
 
-### Cenário 1: Uma semana com muitas atividades
-```json
+### Scenario 1: One busy week
+
+json
+ 
+
 GET /api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-21
 
 Response:
@@ -356,10 +371,15 @@ Response:
     "activityCount": 3
   }
 ]
-```
 
-### Cenário 2: Daily summary da mesma semana
-```json
+
+
+
+### Scenario 2: Daily summary for the same week
+
+json
+ 
+
 GET /api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-21
 
 Response:
@@ -384,4 +404,8 @@ Response:
   },
   ...
 ]
-```
+
+json
+ 
+
+[]

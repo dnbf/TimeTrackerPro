@@ -1,13 +1,13 @@
-# 🧪 Teste do CRUD de ActivityEntry - Fase 4
+# 🧪 ActivityEntry CRUD Testing – Phase 4
 
-## Pré-requisitos
-- API rodando em `https://localhost:5001`
-- Usuário registrado e token JWT obtido
-- Postman, Thunder Client, ou similar
+## Prerequisites
+- API running at `https://localhost:5001`
+- Registered user and JWT token obtained
+- Postman, Thunder Client, or similar
 
 ---
 
-## Passo 1: Obter o token de autenticação
+## Step 1: Get authentication token
 
 **Endpoint:** `POST /api/auth/login`
 
@@ -19,32 +19,34 @@
 }
 ```
 
-**Copie o token retornado para usar nos próximos passos**
+**Copy the returned token to use in the next steps.**
 
 ---
 
-## Passo 2: Criar uma atividade
+## Step 2: Create an activity
 
 **Endpoint:** `POST /api/activities`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
 **Request:**
-```json
+
+json
+
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
   "endTime": "10:30:00",
   "category": 1,
-  "description": "Desenvolvimento de feature de autenticação"
+  "description": "Authentication feature development"
 }
-```
 
-**Categorias disponíveis:**
+
+
+
+**Available categories:**
 - `1` = Development
 - `2` = Meeting
 - `3` = Study
@@ -52,8 +54,11 @@ Content-Type: application/json
 - `5` = Break
 - `6` = Other
 
-**Response esperado (201 Created):**
-```json
+**Expected response (201 Created):**
+
+json
+
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -62,32 +67,34 @@ Content-Type: application/json
   "endTime": "10:30:00",
   "durationMinutes": 90,
   "category": 1,
-  "description": "Desenvolvimento de feature de autenticação",
+  "description": "Authentication feature development",
   "createdAt": "2024-01-15T10:30:00Z"
 }
-```
 
-**Validações:**
-- ✅ DurationMinutes é calculado automaticamente
-- ✅ UserId é preenchido com base no token
-- ✅ Se StartTime >= EndTime → 400 Bad Request
-- ✅ Se categoria inválida → 400 Bad Request
-- ✅ Se descrição > 500 caracteres → 400 Bad Request
+
+
+
+**Validations:**
+- ✅ DurationMinutes is calculated automatically
+- ✅ UserId is filled based on the token
+- ✅ If StartTime >= EndTime → 400 Bad Request
+- ✅ If category is invalid → 400 Bad Request
+- ✅ If description > 500 characters → 400 Bad Request
 
 ---
 
-## Passo 3: Listar atividades (sem filtros)
+## Step 3: List activities (no filters)
 
 **Endpoint:** `GET /api/activities`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+
+
 [
   {
     "id": "550e8400-e29b-41d4-a716-446655440001",
@@ -97,7 +104,7 @@ Content-Type: application/json
     "endTime": "10:30:00",
     "durationMinutes": 90,
     "category": 1,
-    "description": "Desenvolvimento de feature de autenticação",
+    "description": "Authentication feature development",
     "createdAt": "2024-01-15T10:30:00Z"
   },
   {
@@ -108,101 +115,120 @@ Content-Type: application/json
     "endTime": "15:00:00",
     "durationMinutes": 60,
     "category": 2,
-    "description": "Reunião com time",
+    "description": "Team meeting",
     "createdAt": "2024-01-15T15:00:00Z"
   }
 ]
-```
 
-**Validações:**
-- ✅ Retorna apenas atividades do usuário autenticado
-- ✅ Ordenadas por data descrescente, depois por hora descrescente
+
+
+
+**Validations:**
+- ✅ Returns only activities of the authenticated user
+- ✅ Sorted by date descending, then time descending
 
 ---
 
-## Passo 4: Listar atividades com filtro de data
+## Step 4: List activities with date filter
 
-**Endpoint:** `GET /api/activities?startDate=2024-01-15&endDate=2024-01-15`
+**Endpoint:**  
+`GET /api/activities?startDate=2024-01-15&endDate=2024-01-15`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+
+
 [
-  // Apenas atividades no intervalo de 15/01/2024
+  // Only activities in the 2024-01-15 range
 ]
-```
 
-**Variações de teste:**
-```
-# Apenas startDate
+
+
+
+**Test variations:**
+
+http
+ 
+
+# Only startDate
 GET /api/activities?startDate=2024-01-15
 
-# Apenas endDate
+# Only endDate
 GET /api/activities?endDate=2024-01-15
 
-# Ambas
+# Both
 GET /api/activities?startDate=2024-01-10&endDate=2024-01-20
-```
+
+
+
 
 ---
 
-## Passo 5: Listar atividades com filtro de categoria
+## Step 5: List activities with category filter
 
 **Endpoint:** `GET /api/activities?category=1`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+json
+ 
 
-**Response esperado (200 OK):**
-```json
 [
-  // Apenas atividades com categoria Development (1)
+  // Only activities in the 2024-01-15 range
 ]
-```
+**Expected response (200 OK):**
+
+json
+ 
+
+[
+  // Only activities with category Development (1)
+]
+
+
+
 
 ---
 
-## Passo 6: Combinar filtros
+## Step 6: Combine filters
 
-**Endpoint:** `GET /api/activities?startDate=2024-01-15&endDate=2024-01-20&category=2`
+**Endpoint:**  
+`GET /api/activities?startDate=2024-01-15&endDate=2024-01-20&category=2`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 [
-  // Apenas atividades de Meetings (2) entre 15 e 20 de janeiro
+  // Only Meeting (2) activities between January 15 and 20
 ]
-```
+
+
+
 
 ---
 
-## Passo 7: Obter uma atividade específica
+## Step 7: Get a specific activity
 
 **Endpoint:** `GET /api/activities/{id}`
 
-Substitua `{id}` com um ID retornado nos passos anteriores
+Replace `{id}` with an ID returned in previous steps.
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -211,42 +237,49 @@ Content-Type: application/json
   "endTime": "10:30:00",
   "durationMinutes": 90,
   "category": 1,
-  "description": "Desenvolvimento de feature de autenticação",
+  "description": "Authentication feature development",
   "createdAt": "2024-01-15T10:30:00Z"
 }
-```
 
-**Validações:**
-- ✅ Se ID não pertence ao usuário autenticado → 404 Not Found
-- ✅ Se ID não existe → 404 Not Found
+
+
+
+**Validations:**
+- ✅ If ID does not belong to authenticated user → 404 Not Found
+- ✅ If ID does not exist → 404 Not Found
 
 ---
 
-## Passo 8: Atualizar uma atividade
+## Step 8: Update an activity
 
 **Endpoint:** `PUT /api/activities/{id}`
 
-Substitua `{id}` com um ID retornado anteriormente
+Replace `{id}` with a previously returned ID.
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
 **Request:**
-```json
+
+json
+ 
+
 {
   "date": "2024-01-15",
   "startTime": "10:00:00",
   "endTime": "11:00:00",
   "category": 1,
-  "description": "Desenvolvimento - atualizado"
+  "description": "Development - updated"
 }
-```
 
-**Response esperado (200 OK):**
-```json
+
+
+
+**Expected response (200 OK):**
+
+json
+ 
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -255,115 +288,137 @@ Content-Type: application/json
   "endTime": "11:00:00",
   "durationMinutes": 60,
   "category": 1,
-  "description": "Desenvolvimento - atualizado",
+  "description": "Development - updated",
   "createdAt": "2024-01-15T10:30:00Z"
 }
-```
 
-**Validações:**
-- ✅ DurationMinutes é recalculado
-- ✅ Se ID não pertence ao usuário → 404 Not Found
-- ✅ Se dados inválidos → 400 Bad Request
+
+
+
+**Validations:**
+- ✅ DurationMinutes is recalculated
+- ✅ If ID does not belong to user → 404 Not Found
+- ✅ If data is invalid → 400 Bad Request
 
 ---
 
-## Passo 9: Deletar uma atividade
+## Step 9: Delete an activity
 
 **Endpoint:** `DELETE /api/activities/{id}`
 
-Substitua `{id}` com um ID retornado anteriormente
+Replace `{id}` with a previously returned ID.
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_aqui>
-Content-Type: application/json
-```
+json
+ 
 
-**Response esperado (204 No Content)**
+{
+  "date": "2024-01-15",
+  "startTime": "10:00:00",
+  "endTime": "11:00:00",
+  "category": 1,
+  "description": "Development - updated"
+}
+**Expected response (204 No Content)**
 
-**Validações:**
-- ✅ Atividade é removida do banco
-- ✅ Se ID não pertence ao usuário → 404 Not Found
-- ✅ Se tentar listar a atividade deletada → 404 Not Found
+**Validations:**
+- ✅ Activity is removed from the database
+- ✅ If ID does not belong to user → 404 Not Found
+- ✅ If you try to fetch the deleted activity → 404 Not Found
 
 ---
 
-## ⚠️ Testes de erro
+## ⚠️ Error tests
 
-### Teste 1: Criar atividade sem token
-**Endpoint:** `POST /api/activities`
-**Sem header Authorization**
-**Esperado:** 401 Unauthorized
+### Test 1: Create activity without token
+**Endpoint:** `POST /api/activities`  
+**No Authorization header**  
+**Expected:** 401 Unauthorized
 
-### Teste 2: StartTime >= EndTime
+### Test 2: StartTime >= EndTime
 **Request:**
-```json
+
+json
+ 
+
 {
   "date": "2024-01-15",
   "startTime": "10:00:00",
   "endTime": "09:00:00",
   "category": 1,
-  "description": "Teste"
+  "description": "Test"
 }
-```
-**Esperado:** 400 Bad Request - "StartTime must be before EndTime"
 
-### Teste 3: Categoria inválida
+
+
+**Expected:** 400 Bad Request – "StartTime must be before EndTime"
+
+### Test 3: Invalid category
 **Request:**
-```json
+
+json
+ 
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
   "endTime": "10:00:00",
   "category": 99,
-  "description": "Teste"
+  "description": "Test"
 }
-```
-**Esperado:** 400 Bad Request - "Invalid category"
 
-### Teste 4: Descrição muito longa
+
+
+**Expected:** 400 Bad Request – "Invalid category"
+
+### Test 4: Description too long
 **Request:**
-```json
+
+json
+ 
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
   "endTime": "10:00:00",
   "category": 1,
-  "description": "Lorem ipsum dolor sit amet... (mais de 500 caracteres)"
+  "description": "Lorem ipsum dolor sit amet... (more than 500 characters)"
 }
-```
-**Esperado:** 400 Bad Request - "Description cannot exceed 500 characters"
 
-### Teste 5: Atualizar atividade de outro usuário
-1. Crie uma atividade com Usuário A
-2. Faça login com Usuário B
-3. Tente fazer PUT naquela atividade
-**Esperado:** 404 Not Found
 
-### Teste 6: Deletar atividade de outro usuário
-1. Crie uma atividade com Usuário A
-2. Faça login com Usuário B
-3. Tente fazer DELETE naquela atividade
-**Esperado:** 404 Not Found
+
+**Expected:** 400 Bad Request – "Description cannot exceed 500 characters"
+
+### Test 5: Update activity from another user
+1. Create an activity with User A  
+2. Log in as User B  
+3. Try to PUT that activity  
+**Expected:** 404 Not Found
+
+### Test 6: Delete activity from another user
+1. Create an activity with User A  
+2. Log in as User B  
+3. Try to DELETE that activity  
+**Expected:** 404 Not Found
 
 ---
 
-## ✅ Checklist de conclusão
+## ✅ Completion checklist
 
-- [ ] POST /api/activities cria atividade com UserId correto
-- [ ] POST /api/activities calcula DurationMinutes corretamente
-- [ ] GET /api/activities retorna apenas atividades do usuário
-- [ ] GET /api/activities filtra por startDate corretamente
-- [ ] GET /api/activities filtra por endDate corretamente
-- [ ] GET /api/activities filtra por category corretamente
-- [ ] GET /api/activities/id retorna atividade específica
-- [ ] GET /api/activities/id retorna 404 se ID não pertence ao usuário
-- [ ] PUT /api/activities/id atualiza atividade
-- [ ] PUT /api/activities/id recalcula DurationMinutes
-- [ ] PUT /api/activities/id retorna 404 se ID não pertence ao usuário
-- [ ] DELETE /api/activities/id remove atividade
-- [ ] DELETE /api/activities/id retorna 404 se ID não pertence ao usuário
-- [ ] Todos endpoints retornam 401 sem token válido
-- [ ] Validações de hora funcionam (StartTime < EndTime)
-- [ ] Validações de categoria funcionam
-- [ ] Validações de descrição funcionam (max 500 chars)
+- [ ] POST /api/activities creates activity with correct UserId
+- [ ] POST /api/activities calculates DurationMinutes correctly
+- [ ] GET /api/activities returns only user activities
+- [ ] GET /api/activities filters correctly by startDate
+- [ ] GET /api/activities filters correctly by endDate
+- [ ] GET /api/activities filters correctly by category
+- [ ] GET /api/activities/{id} returns specific activity
+- [ ] GET /api/activities/{id} returns 404 if ID does not belong to user
+- [ ] PUT /api/activities/{id} updates activity
+- [ ] PUT /api/activities/{id} recalculates DurationMinutes
+- [ ] PUT /api/activities/{id} returns 404 if ID does not belong to user
+- [ ] DELETE /api/activities/{id} removes activity
+- [ ] DELETE /api/activities/{id} returns 404 if ID does not belong to user
+- [ ] All endpoints return 401 without a valid token
+- [ ] Time validations work (StartTime < EndTime)
+- [ ] Category validations work
+- [ ] Description validations work (max 500 chars)

@@ -1,10 +1,12 @@
-# 🧪 Teste do Fluxo de Autenticação - Fase 3
+ 
 
-## Pré-requisitos
-- API rodando em `https://localhost:5001` (ou porta configurada)
-- Postman, Thunder Client, ou similar
+# 🧪 Authentication Flow Testing – Phase 3
 
-## Passo 1: Registrar um novo usuário
+## Prerequisites
+- API running at `https://localhost:5001` (or configured port)
+- Postman, Thunder Client, or similar
+
+## Step 1: Register a new user
 
 **Endpoint:** `POST /api/auth/register`
 
@@ -17,7 +19,7 @@
 }
 ```
 
-**Response esperado (201 Created):**
+**Expected response (201 Created):**
 ```json
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
@@ -27,14 +29,14 @@
 }
 ```
 
-**Validações:**
-- ✅ Salva o usuário no banco com hash de senha
-- ✅ Retorna token JWT válido
-- ✅ Se email já existe → 400 Bad Request
+**Validations:**
+- ✅ Saves the user to the database with a password hash
+- ✅ Returns a valid JWT token
+- ✅ If email already exists → 400 Bad Request
 
 ---
 
-## Passo 2: Fazer login com as credenciais
+## Step 2: Log in with credentials
 
 **Endpoint:** `POST /api/auth/login`
 
@@ -46,7 +48,7 @@
 }
 ```
 
-**Response esperado (200 OK):**
+**Expected response (200 OK):**
 ```json
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
@@ -56,117 +58,139 @@
 }
 ```
 
-**Validações:**
-- ✅ Retorna token JWT válido
-- ✅ Se credenciais inválidas → 401 Unauthorized
-- ✅ Se email não existe → 401 Unauthorized
+**Validations:**
+- ✅ Returns a valid JWT token
+- ✅ If credentials are invalid → 401 Unauthorized
+- ✅ If email does not exist → 401 Unauthorized
 
 ---
 
-## Passo 3: Obter dados do usuário autenticado
+## Step 3: Get authenticated user data
 
 **Endpoint:** `GET /api/auth/me`
 
-**Headers obrigatórios:**
-```
-Authorization: Bearer <token_do_passo_2>
-Content-Type: application/json
-```
+**Required headers:**
+Authorization: Bearer Content-Type: application/json
 
-**Response esperado (200 OK):**
-```json
+**Expected response (200 OK):**
+
+json
+ 
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
   "name": "João Silva",
   "email": "joao@example.com",
   "token": ""
 }
-```
 
-**Validações:**
-- ✅ Retorna dados do usuário autenticado
-- ✅ Token não é retornado neste endpoint (campo vazio)
-- ✅ Se token inválido/expirado → 401 Unauthorized
-- ✅ Se sem token → 401 Unauthorized
+
+
+
+**Validations:**
+- ✅ Returns data of the authenticated user
+- ✅ Token is not returned in this endpoint (empty field)
+- ✅ If token is invalid/expired → 401 Unauthorized
+- ✅ If no token → 401 Unauthorized
 
 ---
 
-## ⚠️ Testes de erro
+## ⚠️ Error tests
 
-### Teste 1: Registrar com senha fraca
+### Test 1: Register with weak password
 **Request:**
-```json
+
+json
+ 
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste@example.com",
   "password": "weak"
 }
-```
-**Esperado:** 400 Bad Request - "Password must be at least 8 characters long"
 
-### Teste 2: Registrar sem número na senha
+
+
+**Expected:** 400 Bad Request – "Password must be at least 8 characters long"
+
+### Test 2: Register without a number in the password
 **Request:**
-```json
+
+json
+ 
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste@example.com",
   "password": "WeakPassword"
 }
-```
-**Esperado:** 400 Bad Request - "Password must contain at least one number"
 
-### Teste 3: Registrar sem letra maiúscula na senha
+
+
+**Expected:** 400 Bad Request – "Password must contain at least one number"
+
+### Test 3: Register without an uppercase letter in the password
 **Request:**
-```json
+
+json
+ 
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste@example.com",
   "password": "weakpassword123"
 }
-```
-**Esperado:** 400 Bad Request - "Password must contain at least one uppercase letter"
 
-### Teste 4: Login com senha errada
+
+
+**Expected:** 400 Bad Request – "Password must contain at least one uppercase letter"
+
+### Test 4: Login with wrong password
 **Request:**
-```json
+
+json
+ 
+
 {
   "email": "joao@example.com",
   "password": "WrongPassword123"
 }
-```
-**Esperado:** 401 Unauthorized - "Invalid credentials"
 
-### Teste 5: Acessar /me sem token
-**Esperado:** 401 Unauthorized
+
+
+**Expected:** 401 Unauthorized – "Invalid credentials"
+
+### Test 5: Access /me without token
+**Expected:** 401 Unauthorized
 
 ---
 
-## 📝 Notas importantes
+## 📝 Important notes
 
-1. **Token JWT contém:**
+1. **JWT token contains:**
    - `sub` (subject): UserId
-   - `name`: Nome do usuário
-   - `email`: Email do usuário
-   - `exp`: Tempo de expiração (60 minutos por padrão)
+   - `name`: User name
+   - `email`: User email
+   - `exp`: Expiration time (60 minutes by default)
 
-2. **Senha é hash com:**
-   - Algoritmo: PBKDF2 (RFC2898) com SHA256
-   - Iterações: 10.000
-   - Salt: 16 bytes aleatório
+2. **Password is hashed with:**
+   - Algorithm: PBKDF2 (RFC2898) with SHA256
+   - Iterations: 10,000
+   - Salt: 16 random bytes
 
-3. **Banco de dados:**
-   - SQLite local em `timetracker.db`
-   - Reexecute migrations se necessário: `dotnet ef database update`
+3. **Database:**
+   - Local SQLite at `timetracker.db`
+   - Re-run migrations if needed: `dotnet ef database update`
 
 ---
 
-## ✅ Checklist de conclusão
+## ✅ Completion checklist
 
-- [ ] POST /api/auth/register retorna 201 com token
-- [ ] POST /api/auth/login retorna 200 com token
-- [ ] GET /api/auth/me com token retorna dados do usuário
-- [ ] GET /api/auth/me sem token retorna 401
-- [ ] Validações de senha funcionam corretamente
-- [ ] Email duplicado retorna 400
-- [ ] Credenciais inválidas retornam 401
-- [ ] Token JWT é válido e decodificável
+- [ ] POST /api/auth/register returns 201 with token
+- [ ] POST /api/auth/login returns 200 with token
+- [ ] GET /api/auth/me with token returns user data
+- [ ] GET /api/auth/me without token returns 401
+- [ ] Password validations work correctly
+- [ ] Duplicate email returns 400
+- [ ] Invalid credentials return 401
+- [ ] JWT token is valid and decodable

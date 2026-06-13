@@ -1,301 +1,384 @@
-# 🚀 GUIA COMPLETO DE TESTES - Fases 3, 4 e 5
+# 🚀 COMPLETE TESTING GUIDE - Phases 3, 4, and 5
 
-## 📋 Índice
-1. [Setup Inicial](#setup-inicial)
-2. [Fase 3 - Autenticação](#fase-3--autenticação)
-3. [Fase 4 - CRUD de Atividades](#fase-4--crud-de-atividades)
-4. [Fase 5 - Relatórios](#fase-5--relatórios)
-5. [Testes de Erro](#testes-de-erro)
-6. [Checklist Final](#checklist-final)
-
----
-
-## Setup Inicial
-
-### Pré-requisitos
-- Visual Studio 2026 aberto com o projeto TimeTrackerPro
-- Postman, Thunder Client, ou Insomnia para testar endpoints
-- API rodando em `https://localhost:5001` (ou porta configurada)
-
-### Passos
-1. Abra Visual Studio
-2. Compile o projeto: `Ctrl + Shift + B` ou Build > Build Solution
-3. Rode a aplicação: `F5` ou Debug > Start Debugging
-4. Acesse Swagger em: `https://localhost:5001/swagger/index.html`
-5. Você deve ver 3 controllers: **Auth**, **Activities**, **Reports**
-
-✅ **Verificação:** Se o Swagger carregar com os 3 controllers, está tudo pronto!
+## 📋 Table of Contents
+1. [Initial Setup](#initial-setup)
+2. [Phase 3 - Authentication](#phase-3--authentication)
+3. [Phase 4 - Activity CRUD](#phase-4--activity-crud)
+4. [Phase 5 - Reports](#phase-5--reports)
+5. [Error Tests](#error-tests)
+6. [Final Checklist](#final-checklist)
 
 ---
 
-# Fase 3 – Autenticação
+## Initial Setup
 
-## Teste 3.1: Registrar Usuário
+### Prerequisites
+- Visual Studio 2026 open with the TimeTrackerPro project
+- Postman, Thunder Client, or Insomnia to test endpoints
+- API running at `https://localhost:5001` (or configured port)
+
+### Steps
+1. Open Visual Studio
+2. Build the project: `Ctrl + Shift + B` or Build > Build Solution
+3. Run the application: `F5` or Debug > Start Debugging
+4. Open Swagger at: `https://localhost:5001/swagger/index.html`
+5. You should see 3 controllers: **Auth**, **Activities**, **Reports**
+
+✅ **Verification:** If Swagger loads with the 3 controllers, everything is ready!
+
+---
+
+# Phase 3 – Authentication
+
+## Test 3.1: Register User
 
 **URL:** `POST https://localhost:5001/api/auth/register`
 
 **Headers:**
-```
 Content-Type: application/json
-```
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "name": "João Silva",
   "email": "joao@example.com",
   "password": "Password123"
 }
-```
 
-**Esperado (201 Created):**
-```json
+
+
+
+**Expected (201 Created):**
+
+json
+Copiar
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
   "name": "João Silva",
   "email": "joao@example.com",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
-```
 
-**✅ Validações:**
-- [ ] Status 201 retornado
-- [ ] ID é um GUID válido
-- [ ] Token é uma string não vazia
-- [ ] Usuário pode fazer login com essas credenciais
 
-**💾 Salve o token** - você vai usar nos próximos testes!
+
+
+**✅ Validations:**
+- [ ] Status 201 returned
+- [ ] ID is a valid GUID
+- [ ] Token is a non-empty string
+- [ ] User can log in with these credentials
+
+**💾 Save the token** — you will use it in the next tests!
 
 ---
 
-## Teste 3.2: Tentar Registrar com Email Duplicado
+## Test 3.2: Try Registering with a Duplicate Email
 
 **URL:** `POST https://localhost:5001/api/auth/register`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
-  "name": "Outro Usuário",
+  "name": "Other User",
   "email": "joao@example.com",
   "password": "Password456"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Email already registered"
 }
-```
 
-**✅ Validações:**
-- [ ] Status 400 retornado
-- [ ] Mensagem de erro clara
+
+
+
+**✅ Validations:**
+- [ ] Status 400 returned
+- [ ] Clear error message
 
 ---
 
-## Teste 3.3: Tentar Registrar com Senha Fraca
+## Test 3.3: Try Registering with a Weak Password
 
 **URL:** `POST https://localhost:5001/api/auth/register`
 
-**Body (senha < 8 caracteres):**
-```json
+**Body (password < 8 characters):**
+
+json
+Copiar
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste@example.com",
   "password": "Pass12"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Password must be at least 8 characters long"
 }
-```
 
-**Body (sem letra maiúscula):**
-```json
+
+
+
+**Body (without uppercase letter):**
+
+json
+Copiar
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste2@example.com",
   "password": "password123"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Password must contain at least one uppercase letter"
 }
-```
 
-**Body (sem número):**
-```json
+
+
+
+**Body (without a number):**
+
+json
+Copiar
+
 {
-  "name": "Teste",
+  "name": "Test",
   "email": "teste3@example.com",
   "password": "PasswordABC"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Password must contain at least one number"
 }
-```
 
-**✅ Validações:**
-- [ ] Rejeita senha < 8 caracteres
-- [ ] Rejeita senha sem maiúscula
-- [ ] Rejeita senha sem número
+
+
+
+**✅ Validations:**
+- [ ] Rejects passwords shorter than 8 characters
+- [ ] Rejects passwords without an uppercase letter
+- [ ] Rejects passwords without a number
 
 ---
 
-## Teste 3.4: Login com Credenciais Corretas
+## Test 3.4: Log In with Correct Credentials
 
 **URL:** `POST https://localhost:5001/api/auth/login`
 
 **Headers:**
-```
 Content-Type: application/json
-```
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "email": "joao@example.com",
   "password": "Password123"
 }
-```
 
-**Esperado (200 OK):**
-```json
+
+
+
+**Expected (200 OK):**
+
+json
+Copiar
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
   "name": "João Silva",
   "email": "joao@example.com",
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
-```
 
-**✅ Validações:**
-- [ ] Status 200 retornado
-- [ ] Token retornado é válido
-- [ ] Token é diferente de cada chamada (refresco)
 
-**💾 Copie este token também - você vai usar!**
+
+
+**✅ Validations:**
+- [ ] Status 200 returned
+- [ ] Returned token is valid
+- [ ] Token is different on each call (refresh)
+
+**💾 Copy this token too — you will use it!**
 
 ---
 
-## Teste 3.5: Login com Credenciais Incorretas
+## Test 3.5: Log In with Incorrect Credentials
 
 **URL:** `POST https://localhost:5001/api/auth/login`
 
-**Body (senha errada):**
-```json
+**Body (wrong password):**
+
+json
+Copiar
+
 {
   "email": "joao@example.com",
   "password": "WrongPassword123"
 }
-```
 
-**Esperado (401 Unauthorized):**
-```json
+
+
+
+**Expected (401 Unauthorized):**
+
+json
+Copiar
+
 {
   "message": "Invalid credentials"
 }
-```
 
-**Body (email não existe):**
-```json
+
+
+
+**Body (email does not exist):**
+
+json
+Copiar
+
 {
-  "email": "naoexiste@example.com",
+  "email": "doesnotexist@example.com",
   "password": "Password123"
 }
-```
 
-**Esperado (401 Unauthorized):**
-```json
+
+
+
+**Expected (401 Unauthorized):**
+
+json
+Copiar
+
 {
   "message": "Invalid credentials"
 }
-```
 
-**✅ Validações:**
-- [ ] Rejeita senha errada com 401
-- [ ] Rejeita email inexistente com 401
-- [ ] Mensagem não revela qual campo está errado (segurança)
+
+
+
+**✅ Validations:**
+- [ ] Rejects wrong password with 401
+- [ ] Rejects non-existing email with 401
+- [ ] Message does not reveal which field is wrong (security)
 
 ---
 
-## Teste 3.6: Obter Dados do Usuário Autenticado
+## Test 3.6: Get Authenticated User Data
 
 **URL:** `GET https://localhost:5001/api/auth/me`
 
-**Headers:**
-```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-Content-Type: application/json
-```
+**Required Headers:**
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
   "name": "João Silva",
   "email": "joao@example.com",
   "token": ""
 }
-```
 
-**✅ Validações:**
-- [ ] Status 200 retornado
-- [ ] Retorna dados do usuário correto
-- [ ] Token é vazio nesta resposta (segurança)
+
+
+
+**✅ Validations:**
+- [ ] Status 200 returned
+- [ ] Returns the correct user data
+- [ ] Token is empty in this response (security)
 
 ---
 
-## Teste 3.7: Acessar /me sem Token
+## Test 3.7: Access /me Without Token
 
 **URL:** `GET https://localhost:5001/api/auth/me`
 
-**Sem header Authorization**
+**Without Authorization header**
 
-**Esperado (401 Unauthorized)**
+**Expected (401 Unauthorized)**
 
-**✅ Validações:**
-- [ ] Rejeita requisição sem token
-- [ ] Não expõe informações sensíveis
+**✅ Validations:**
+- [ ] Rejects request without token
+- [ ] Does not expose sensitive information
 
 ---
 
-# Fase 4 – CRUD de Atividades
+# Phase 4 – Activity CRUD
 
-## Teste 4.1: Criar Primeira Atividade
+## Test 4.1: Create First Activity
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token_do_login>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
   "endTime": "11:00:00",
   "category": 1,
-  "description": "Implementação do CRUD de atividades"
+  "description": "Implementation of the activity CRUD"
 }
-```
 
-**Esperado (201 Created):**
-```json
+
+
+
+**Expected (201 Created):**
+
+json
+Copiar
+
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -304,82 +387,102 @@ Content-Type: application/json
   "endTime": "11:00:00",
   "durationMinutes": 120,
   "category": 1,
-  "description": "Implementação do CRUD de atividades",
+  "description": "Implementation of the activity CRUD",
   "createdAt": "2024-01-15T09:00:00Z"
 }
-```
 
-**✅ Validações:**
-- [ ] Status 201 retornado
-- [ ] DurationMinutes calculado corretamente (120 minutos = 2 horas)
-- [ ] UserId preenchido automaticamente do token
-- [ ] ID é um GUID válido
 
-**💾 Salve o ID da atividade - você vai precisar!**
+
+
+**✅ Validations:**
+- [ ] Status 201 returned
+- [ ] DurationMinutes calculated correctly (120 minutes = 2 hours)
+- [ ] UserId filled automatically from the token
+- [ ] ID is a valid GUID
+
+**💾 Save the activity ID — you will need it!**
 
 ---
 
-## Teste 4.2: Criar Segunda Atividade (mesmo dia)
+## Test 4.2: Create Second Activity (same day)
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "14:00:00",
   "endTime": "15:30:00",
   "category": 2,
-  "description": "Reunião com o time"
+  "description": "Team meeting"
 }
-```
 
-**Esperado (201 Created):**
-- DurationMinutes = 90 minutos
 
-**✅ Validações:**
-- [ ] Segunda atividade criada sem problemas
-- [ ] Pode ter múltiplas atividades no mesmo dia
 
-**💾 Salve este ID também!**
+
+**Expected (201 Created):**
+- DurationMinutes = 90 minutes
+
+**✅ Validations:**
+- [ ] Second activity created successfully
+- [ ] Multiple activities can exist on the same day
+
+**💾 Save this ID too!**
 
 ---
 
-## Teste 4.3: Criar Terceira Atividade (dia diferente)
+## Test 4.3: Create Third Activity (different day)
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-16",
   "startTime": "09:00:00",
   "endTime": "12:30:00",
   "category": 1,
-  "description": "Desenvolvimento - dia 16"
+  "description": "Development - day 16"
 }
-```
 
-**Esperado (201 Created):**
-- DurationMinutes = 210 minutos
 
-**✅ Validações:**
-- [ ] Terceira atividade em data diferente criada com sucesso
+
+
+**Expected (201 Created):**
+- DurationMinutes = 210 minutes
+
+**✅ Validations:**
+- [ ] Third activity created successfully on a different date
 
 ---
 
-## Teste 4.4: Listar Todas as Atividades
+## Test 4.4: List All Activities
 
 **URL:** `GET https://localhost:5001/api/activities`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+json
+Copiar
 
-**Esperado (200 OK):**
-```json
+{
+  "date": "2024-01-15",
+  "startTime": "09:00:00",
+  "endTime": "11:00:00",
+  "category": 1,
+  "description": "Implementation of the activity CRUD"
+}
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
   {
     "id": "660e8400-e29b-41d4-a716-446655440003",
@@ -389,7 +492,7 @@ Content-Type: application/json
     "endTime": "12:30:00",
     "durationMinutes": 210,
     "category": 1,
-    "description": "Desenvolvimento - dia 16",
+    "description": "Development - day 16",
     "createdAt": "2024-01-16T09:00:00Z"
   },
   {
@@ -400,7 +503,7 @@ Content-Type: application/json
     "endTime": "15:30:00",
     "durationMinutes": 90,
     "category": 2,
-    "description": "Reunião com o time",
+    "description": "Team meeting",
     "createdAt": "2024-01-15T14:00:00Z"
   },
   {
@@ -411,106 +514,111 @@ Content-Type: application/json
     "endTime": "11:00:00",
     "durationMinutes": 120,
     "category": 1,
-    "description": "Implementação do CRUD de atividades",
+    "description": "Implementation of the activity CRUD",
     "createdAt": "2024-01-15T09:00:00Z"
   }
 ]
-```
 
-**✅ Validações:**
-- [ ] Retorna todas as 3 atividades
-- [ ] Apenas atividades do usuário autenticado aparecem
-- [ ] Ordenadas por data descrescente, depois por hora descrescente
-- [ ] Cada atividade tem todos os campos corretos
+
+
+
+**✅ Validations:**
+- [ ] Returns all 3 activities
+- [ ] Only activities from the authenticated user appear
+- [ ] Ordered by date descending, then by time descending
+- [ ] Each activity has all correct fields
 
 ---
 
-## Teste 4.5: Listar Atividades com Filtro de Data
+## Test 4.5: List Activities with Date Filter
 
 **URL:** `GET https://localhost:5001/api/activities?startDate=2024-01-15&endDate=2024-01-15`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
-  // Apenas as 2 atividades de 2024-01-15
+  // Only activities from 2024-01-15
 ]
-```
 
-**Teste com apenas startDate:**
-```
+
+
+
+**Test with only startDate:**
 GET https://localhost:5001/api/activities?startDate=2024-01-15
-```
 
-**Teste com apenas endDate:**
-```
+**Test with only endDate:**
 GET https://localhost:5001/api/activities?endDate=2024-01-16
-```
 
-**✅ Validações:**
-- [ ] Filtro startDate funciona
-- [ ] Filtro endDate funciona
-- [ ] Ambos combinados funcionam
-- [ ] Retorna apenas atividades no intervalo
+**✅ Validations:**
+- [ ] startDate filter works
+- [ ] endDate filter works
+- [ ] Both combined work
+- [ ] Returns only activities in the interval
 
 ---
 
-## Teste 4.6: Listar Atividades com Filtro de Categoria
+## Test 4.6: List Activities with Category Filter
 
 **URL:** `GET https://localhost:5001/api/activities?category=1`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
-  // Apenas atividades com category=1 (Development)
-  // Deve ter 2 atividades neste caso
+  // Only activities with category=1 (Development)
+  // Should have 2 activities in this case
 ]
-```
 
-**Teste com category=2:**
-```
+
+
+
+**Test with category=2:**
 GET https://localhost:5001/api/activities?category=2
-```
 
-**Esperado:**
-```json
+**Expected:**
+
+json
+Copiar
+
 [
-  // Apenas 1 atividade com category=2 (Meeting)
+  // Only 1 activity with category=2 (Meeting)
 ]
-```
 
-**✅ Validações:**
-- [ ] Filtro de categoria funciona
-- [ ] Category=1 retorna 2 atividades
-- [ ] Category=2 retorna 1 atividade
+
+
+
+**✅ Validations:**
+- [ ] Category filter works
+- [ ] Category=1 returns 2 activities
+- [ ] Category=2 returns 1 activity
 
 ---
 
-## Teste 4.7: Obter Atividade Específica
+## Test 4.7: Get a Specific Activity
 
 **URL:** `GET https://localhost:5001/api/activities/660e8400-e29b-41d4-a716-446655440001`
 
-Substitua o ID por um ID válido retornado anteriormente
+Replace the ID with a valid ID returned earlier
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -519,42 +627,49 @@ Content-Type: application/json
   "endTime": "11:00:00",
   "durationMinutes": 120,
   "category": 1,
-  "description": "Implementação do CRUD de atividades",
+  "description": "Implementation of the activity CRUD",
   "createdAt": "2024-01-15T09:00:00Z"
 }
-```
 
-**✅ Validações:**
-- [ ] Retorna atividade correta
-- [ ] Todos os campos estão presentes
+
+
+
+**✅ Validations:**
+- [ ] Returns the correct activity
+- [ ] All fields are present
 
 ---
 
-## Teste 4.8: Atualizar Atividade
+## Test 4.8: Update Activity
 
 **URL:** `PUT https://localhost:5001/api/activities/660e8400-e29b-41d4-a716-446655440001`
 
-Substitua o ID por um ID válido
+Replace the ID with a valid ID
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "10:00:00",
   "endTime": "11:30:00",
   "category": 1,
-  "description": "Implementação do CRUD - ATUALIZADO"
+  "description": "Implementation of CRUD - UPDATED"
 }
-```
 
-**Esperado (200 OK):**
-```json
+
+
+
+**Expected (200 OK):**
+
+json
+Copiar
+
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
   "userId": "550e8400-e29b-41d4-a716-446655440000",
@@ -563,67 +678,77 @@ Content-Type: application/json
   "endTime": "11:30:00",
   "durationMinutes": 90,
   "category": 1,
-  "description": "Implementação do CRUD - ATUALIZADO",
+  "description": "Implementation of CRUD - UPDATED",
   "createdAt": "2024-01-15T09:00:00Z"
 }
-```
 
-**✅ Validações:**
-- [ ] Atividade atualizada com sucesso
-- [ ] StartTime e EndTime atualizados
-- [ ] DurationMinutes recalculado (agora 90 em vez de 120)
-- [ ] Descrição atualizada
-- [ ] CreatedAt não muda
+
+
+
+**✅ Validations:**
+- [ ] Activity updated successfully
+- [ ] StartTime and EndTime updated
+- [ ] DurationMinutes recalculated (now 90 instead of 120)
+- [ ] Description updated
+- [ ] CreatedAt does not change
 
 ---
 
-## Teste 4.9: Deletar Atividade
+## Test 4.9: Delete Activity
 
 **URL:** `DELETE https://localhost:5001/api/activities/660e8400-e29b-41d4-a716-446655440002`
 
-Substitua o ID por um ID válido (preferencialmente o que você não vai precisar mais)
+Replace the ID with a valid ID (preferably one you no longer need)
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+json
+Copiar
 
-**Esperado (204 No Content)**
+{
+  "date": "2024-01-15",
+  "startTime": "10:00:00",
+  "endTime": "11:30:00",
+  "category": 1,
+  "description": "Implementation of CRUD - UPDATED"
+}
+**Expected (204 No Content)**
 
-**Validação:**
-```
-GET https://localhost:5001/api/activities/{id_deletado}
-```
+**Validation:**
+GET https://localhost:5001/api/activities/{deleted_id}
 
-**Esperado (404 Not Found):**
-```json
+**Expected (404 Not Found):**
+
+json
+Copiar
+
 {
   "message": "Activity not found"
 }
-```
 
-**✅ Validações:**
-- [ ] Delete retorna 204
-- [ ] Atividade não pode mais ser recuperada
-- [ ] Lista de atividades não inclui a deletada
+
+
+
+**✅ Validations:**
+- [ ] Delete returns 204
+- [ ] Activity can no longer be retrieved
+- [ ] Activity list does not include the deleted one
 
 ---
 
-# Fase 5 – Relatórios
+# Phase 5 – Reports
 
-## Teste 5.1: Relatório de Tempo por Categoria (sem filtro)
+## Test 5.1: Time by Category Report (no filter)
 
 **URL:** `GET https://localhost:5001/api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
   {
     "category": "Development",
@@ -638,36 +763,38 @@ Content-Type: application/json
     "activityCount": 1
   }
 ]
-```
 
-**Cálculos:**
-- Development: (90 + 210) = 300 minutos = 5.0 horas (2 atividades)
-  - Nota: A primeira atividade foi atualizada de 120 para 90 minutos
-- Meeting: 90 minutos = 1.5 horas (1 atividade)
 
-**✅ Validações:**
-- [ ] Relatório retornado com sucesso
-- [ ] Minutos somados corretamente
-- [ ] Horas convertidas corretamente (minutos / 60)
-- [ ] Contagem de atividades correta
-- [ ] Categorias ordenadas alfabeticamente
+
+
+**Calculations:**
+- Development: (90 + 210) = 300 minutes = 5.0 hours (2 activities)
+  - Note: The first activity was updated from 120 to 90 minutes
+- Meeting: 90 minutes = 1.5 hours (1 activity)
+
+**✅ Validations:**
+- [ ] Report returned successfully
+- [ ] Minutes summed correctly
+- [ ] Hours converted correctly (minutes / 60)
+- [ ] Activity count is correct
+- [ ] Categories sorted alphabetically
 
 ---
 
-## Teste 5.2: Relatório de Tempo por Categoria Específica
+## Test 5.2: Time by Specific Category Report
 
 **URL:** `GET https://localhost:5001/api/reports/time-by-category?startDate=2024-01-15&endDate=2024-01-16&category=1`
 
 (Category 1 = Development)
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
   {
     "category": "Development",
@@ -676,27 +803,29 @@ Content-Type: application/json
     "activityCount": 2
   }
 ]
-```
 
-**✅ Validações:**
-- [ ] Filtra apenas a categoria solicitada
-- [ ] Outras categorias não aparecem
-- [ ] Cálculos estão corretos
+
+
+
+**✅ Validations:**
+- [ ] Filters only the requested category
+- [ ] Other categories do not appear
+- [ ] Calculations are correct
 
 ---
 
-## Teste 5.3: Relatório Diário
+## Test 5.3: Daily Report
 
 **URL:** `GET https://localhost:5001/api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-16`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
   {
     "date": "2024-01-15",
@@ -711,33 +840,35 @@ Content-Type: application/json
     "activityCount": 1
   }
 ]
-```
 
-**Cálculos:**
-- 2024-01-15: 90 + 90 = 180 minutos = 3.0 horas (2 atividades)
-- 2024-01-16: 210 minutos = 3.5 horas (1 atividade)
 
-**✅ Validações:**
-- [ ] Relatório retornado com sucesso
-- [ ] Minutos por dia somados corretamente
-- [ ] Horas calculadas corretamente
-- [ ] Atividades contadas corretamente
-- [ ] Datas em ordem crescente
+
+
+**Calculations:**
+- 2024-01-15: 90 + 90 = 180 minutes = 3.0 hours (2 activities)
+- 2024-01-16: 210 minutes = 3.5 hours (1 activity)
+
+**✅ Validations:**
+- [ ] Report returned successfully
+- [ ] Minutes per day summed correctly
+- [ ] Hours calculated correctly
+- [ ] Activity count is correct
+- [ ] Dates are in ascending order
 
 ---
 
-## Teste 5.4: Relatório de Um Dia Específico
+## Test 5.4: Report for a Single Day
 
 **URL:** `GET https://localhost:5001/api/reports/daily-summary?startDate=2024-01-15&endDate=2024-01-15`
 
 **Headers:**
-```
-Authorization: Bearer <seu_token>
-Content-Type: application/json
-```
+Authorization: Bearer Content-Type: application/json
 
-**Esperado (200 OK):**
-```json
+**Expected (200 OK):**
+
+json
+Copiar
+
 [
   {
     "date": "2024-01-15",
@@ -746,80 +877,105 @@ Content-Type: application/json
     "activityCount": 2
   }
 ]
-```
 
-**✅ Validações:**
-- [ ] Retorna apenas dados de um dia
-- [ ] Cálculos corretos para esse dia
+
+
+
+**✅ Validations:**
+- [ ] Returns only one day of data
+- [ ] Calculations are correct for that day
 
 ---
 
-# Testes de Erro
+# Error Tests
 
-## Erro 1: Criar Atividade sem Token
+## Error 1: Create Activity Without Token
 
 **URL:** `POST https://localhost:5001/api/activities`
 
-**Sem header Authorization**
+**Without Authorization header**
 
-**Esperado (401 Unauthorized)**
+**Expected (401 Unauthorized)**
 
 ---
 
-## Erro 2: StartTime >= EndTime
+## Error 2: StartTime >= EndTime
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "11:00:00",
   "endTime": "10:00:00",
   "category": 1,
-  "description": "Teste"
+  "description": "Test"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "StartTime must be before EndTime"
 }
-```
+
+
+
 
 ---
 
-## Erro 3: Categoria Inválida
+## Error 3: Invalid Category
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
   "endTime": "10:00:00",
   "category": 99,
-  "description": "Teste"
+  "description": "Test"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Invalid category"
 }
-```
+
+
+
 
 ---
 
-## Erro 4: Descrição muito longa
+## Error 4: Description Too Long
 
 **URL:** `POST https://localhost:5001/api/activities`
 
 **Body:**
-```json
+
+json
+Copiar
+
 {
   "date": "2024-01-15",
   "startTime": "09:00:00",
@@ -827,100 +983,117 @@ Content-Type: application/json
   "category": 1,
   "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 }
-```
 
-**Esperado (400 Bad Request):**
-```json
+
+
+
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Description cannot exceed 500 characters"
 }
-```
+
+
+
 
 ---
 
-## Erro 5: Relatório sem datas
+## Error 5: Report Without Dates
 
 **URL:** `GET https://localhost:5001/api/reports/time-by-category`
 
-**Esperado (400 Bad Request):**
-```json
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "startDate and endDate are required"
 }
-```
+
+
+
 
 ---
 
-## Erro 6: StartDate > EndDate em Relatório
+## Error 6: StartDate > EndDate in Report
 
 **URL:** `GET https://localhost:5001/api/reports/daily-summary?startDate=2024-01-20&endDate=2024-01-15`
 
-**Esperado (400 Bad Request):**
-```json
+**Expected (400 Bad Request):**
+
+json
+Copiar
+
 {
   "message": "Start date must be before or equal to end date"
 }
-```
+
+
+
 
 ---
 
-# Checklist Final
+# Final Checklist
 
-## ✅ Fase 3 - Autenticação
-- [ ] POST /api/auth/register com dados válidos retorna 201
-- [ ] POST /api/auth/register com email duplicado retorna 400
-- [ ] POST /api/auth/register valida senha (8+ chars, 1 maiúscula, 1 número)
-- [ ] POST /api/auth/login com credenciais corretas retorna 200
-- [ ] POST /api/auth/login com credenciais erradas retorna 401
-- [ ] GET /api/auth/me com token válido retorna 200
-- [ ] GET /api/auth/me sem token retorna 401
+## ✅ Phase 3 - Authentication
+- [ ] POST /api/auth/register with valid data returns 201
+- [ ] POST /api/auth/register with duplicate email returns 400
+- [ ] POST /api/auth/register validates password (8+ chars, 1 uppercase, 1 number)
+- [ ] POST /api/auth/login with correct credentials returns 200
+- [ ] POST /api/auth/login with wrong credentials returns 401
+- [ ] GET /api/auth/me with valid token returns 200
+- [ ] GET /api/auth/me without token returns 401
 
-## ✅ Fase 4 - Atividades
-- [ ] POST /api/activities cria atividade com sucesso (201)
-- [ ] POST /api/activities calcula DurationMinutes corretamente
-- [ ] POST /api/activities preenche UserId do token automaticamente
-- [ ] GET /api/activities retorna todas as atividades do usuário
-- [ ] GET /api/activities filtra por startDate
-- [ ] GET /api/activities filtra por endDate
-- [ ] GET /api/activities filtra por categoria
-- [ ] GET /api/activities/{id} retorna atividade específica
-- [ ] PUT /api/activities/{id} atualiza atividade
-- [ ] PUT /api/activities/{id} recalcula DurationMinutes
-- [ ] DELETE /api/activities/{id} remove atividade (204)
+## ✅ Phase 4 - Activities
+- [ ] POST /api/activities creates activity successfully (201)
+- [ ] POST /api/activities calculates DurationMinutes correctly
+- [ ] POST /api/activities fills UserId from the token automatically
+- [ ] GET /api/activities returns all user activities
+- [ ] GET /api/activities filters by startDate
+- [ ] GET /api/activities filters by endDate
+- [ ] GET /api/activities filters by category
+- [ ] GET /api/activities/{id} returns a specific activity
+- [ ] PUT /api/activities/{id} updates activity
+- [ ] PUT /api/activities/{id} recalculates DurationMinutes
+- [ ] DELETE /api/activities/{id} removes activity (204)
 
-## ✅ Fase 5 - Relatórios
-- [ ] GET /api/reports/time-by-category retorna dados corretos
-- [ ] GET /api/reports/time-by-category com filtro de categoria funciona
-- [ ] Minutos são somados corretamente em time-by-category
-- [ ] Horas são convertidas corretamente (minutos/60)
-- [ ] Categorias em ordem alfabética
-- [ ] GET /api/reports/daily-summary retorna dados corretos
-- [ ] Datas em ordem crescente em daily-summary
-- [ ] Minutos por dia somados corretamente
+## ✅ Phase 5 - Reports
+- [ ] GET /api/reports/time-by-category returns correct data
+- [ ] GET /api/reports/time-by-category with category filter works
+- [ ] Minutes are summed correctly in time-by-category
+- [ ] Hours are converted correctly (minutes/60)
+- [ ] Categories are in alphabetical order
+- [ ] GET /api/reports/daily-summary returns correct data
+- [ ] Dates are in ascending order in daily-summary
+- [ ] Minutes per day are summed correctly
 
-## ✅ Segurança e Isolamento
-- [ ] Endpoints sem [Authorize] retornam 401
-- [ ] Usuários só veem suas próprias atividades
-- [ ] Usuários não podem atualizar/deletar atividades de outros
-- [ ] Relatórios mostram apenas dados do usuário autenticado
+## ✅ Security and Isolation
+- [ ] Endpoints without [Authorize] return 401
+- [ ] Users only see their own activities
+- [ ] Users cannot update/delete other users' activities
+- [ ] Reports show only data for the authenticated user
 
-## ✅ Validações
-- [ ] StartTime < EndTime obrigatório
-- [ ] Categoria válida obrigatória
-- [ ] Descrição máx 500 caracteres
-- [ ] Datas obrigatórias em relatórios
-- [ ] StartDate <= EndDate obrigatório em relatórios
+## ✅ Validations
+- [ ] StartTime < EndTime is required
+- [ ] Valid category is required
+- [ ] Description max 500 characters
+- [ ] Dates are required in reports
+- [ ] StartDate <= EndDate is required in reports
 
 ---
 
-## 🎯 Resumo
+## 🎯 Summary
 
-Se todos os testes passarem:
-- ✅ Autenticação JWT funcionando
-- ✅ CRUD de atividades com filtros funcionando
-- ✅ Relatórios gerando dados corretos
-- ✅ Segurança implementada (tokens, isolamento de usuário)
-- ✅ Validações de dados funcionando
-- ✅ Tratamento de erros apropriado
+If all tests pass:
+- ✅ JWT authentication is working
+- ✅ Activity CRUD with filters is working
+- ✅ Reports are generating correct data
+- ✅ Security is implemented (tokens, user isolation)
+- ✅ Data validations are working
+- ✅ Error handling is appropriate
 
-Após completar todos os testes, você estará pronto para a **Fase 6 - Qualidade mínima (Testes Unitários)** 🚀
+After completing all tests, you’ll be ready for **Phase 6 - Minimum Quality (Unit Tests)**
