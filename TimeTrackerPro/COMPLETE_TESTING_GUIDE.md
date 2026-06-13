@@ -40,7 +40,7 @@ Content-Type: application/json
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "name": "João Silva",
@@ -54,7 +54,7 @@ Copiar
 **Expected (201 Created):**
 
 json
-Copiar
+ 
 
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
@@ -83,7 +83,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "name": "Other User",
@@ -97,7 +97,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Email already registered"
@@ -119,7 +119,7 @@ Copiar
 **Body (password < 8 characters):**
 
 json
-Copiar
+ 
 
 {
   "name": "Test",
@@ -133,7 +133,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Password must be at least 8 characters long"
@@ -145,7 +145,7 @@ Copiar
 **Body (without uppercase letter):**
 
 json
-Copiar
+ 
 
 {
   "name": "Test",
@@ -159,7 +159,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Password must contain at least one uppercase letter"
@@ -171,7 +171,7 @@ Copiar
 **Body (without a number):**
 
 json
-Copiar
+ 
 
 {
   "name": "Test",
@@ -185,7 +185,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Password must contain at least one number"
@@ -211,7 +211,7 @@ Content-Type: application/json
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "email": "joao@example.com",
@@ -224,7 +224,7 @@ Copiar
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
@@ -252,7 +252,7 @@ Copiar
 **Body (wrong password):**
 
 json
-Copiar
+ 
 
 {
   "email": "joao@example.com",
@@ -265,7 +265,7 @@ Copiar
 **Expected (401 Unauthorized):**
 
 json
-Copiar
+ 
 
 {
   "message": "Invalid credentials"
@@ -277,7 +277,7 @@ Copiar
 **Body (email does not exist):**
 
 json
-Copiar
+ 
 
 {
   "email": "doesnotexist@example.com",
@@ -290,7 +290,7 @@ Copiar
 **Expected (401 Unauthorized):**
 
 json
-Copiar
+ 
 
 {
   "message": "Invalid credentials"
@@ -316,7 +316,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 {
   "id": "550e8400-e29b-41d4-a716-446655440000",
@@ -361,7 +361,7 @@ Authorization: Bearer Content-Type: application/json
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -377,7 +377,7 @@ Copiar
 **Expected (201 Created):**
 
 json
-Copiar
+ 
 
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
@@ -411,7 +411,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -442,7 +442,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-16",
@@ -469,7 +469,7 @@ Copiar
 
 **Headers:**
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -481,7 +481,7 @@ Copiar
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   {
@@ -540,7 +540,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   // Only activities from 2024-01-15
@@ -573,7 +573,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   // Only activities with category=1 (Development)
@@ -589,7 +589,7 @@ GET https://localhost:5001/api/activities?category=2
 **Expected:**
 
 json
-Copiar
+ 
 
 [
   // Only 1 activity with category=2 (Meeting)
@@ -617,7 +617,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
@@ -652,7 +652,7 @@ Authorization: Bearer Content-Type: application/json
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -668,7 +668,7 @@ Copiar
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 {
   "id": "660e8400-e29b-41d4-a716-446655440001",
@@ -702,7 +702,7 @@ Replace the ID with a valid ID (preferably one you no longer need)
 
 **Headers:**
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -719,7 +719,7 @@ GET https://localhost:5001/api/activities/{deleted_id}
 **Expected (404 Not Found):**
 
 json
-Copiar
+ 
 
 {
   "message": "Activity not found"
@@ -747,7 +747,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   {
@@ -793,7 +793,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   {
@@ -824,7 +824,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   {
@@ -867,7 +867,7 @@ Authorization: Bearer Content-Type: application/json
 **Expected (200 OK):**
 
 json
-Copiar
+ 
 
 [
   {
@@ -906,7 +906,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -922,7 +922,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "StartTime must be before EndTime"
@@ -940,7 +940,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -956,7 +956,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Invalid category"
@@ -974,7 +974,7 @@ Copiar
 **Body:**
 
 json
-Copiar
+ 
 
 {
   "date": "2024-01-15",
@@ -990,7 +990,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Description cannot exceed 500 characters"
@@ -1008,7 +1008,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "startDate and endDate are required"
@@ -1026,7 +1026,7 @@ Copiar
 **Expected (400 Bad Request):**
 
 json
-Copiar
+ 
 
 {
   "message": "Start date must be before or equal to end date"
